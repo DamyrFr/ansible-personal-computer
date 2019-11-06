@@ -1,0 +1,47 @@
+---
+- hosts: localhost
+  remote_user: root
+
+  vars:
+    user: thomas
+    timezone: 'Europe/Paris'
+
+  tasks:
+    #DEFAULT USER
+    - name: Create user {{ user }}
+      user: name={{ user }}
+            comment="{{ user }} user"
+            shell=/bin/zsh
+
+    - name: Create user {{ user }}
+      lineinfile:
+       dest: /etc/sudoers
+       state: present
+       regexp: '^%{{ user }}'
+       line: '%{{ user }} ALL=(ALL) NOPASSWD: ALL'
+       validate: 'visudo -cf %s'
+
+    #Paquets
+    - name: install tools and stuff
+      apt: name={{ item }} state=present
+      with_items:
+       - vim
+       - htop
+       - git
+       - ncdu
+       - tmux
+       - zsh
+       - gpg
+       - jq
+
+    #conf
+    - name: Add configuration files
+      copy:
+        src: files/config/{{item}}
+        dest: "/home/{{ user }}"
+        owner: "{{ user }}"
+        group: "{{ user }}"
+        mode: 0644
+      with_items:
+        ['.zshrc','.vimrc', '.tmux.conf', '.gitconfig']
+
