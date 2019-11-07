@@ -10,10 +10,10 @@
     #DEFAULT USER
     - name: Create user {{ user }}
       user: name={{ user }}
-            comment="{{ user }} user"
+            comment={{ user }}
             shell=/bin/zsh
 
-    - name: Create user {{ user }}
+    - name: Create sudo rules for user {{ user }}
       lineinfile:
        dest: /etc/sudoers
        state: present
@@ -26,6 +26,19 @@
       apt: name={{ item }} state=present
       with_items:
        - vim
+       - ipcalc
+       - tcpdump
+       - dnsutils
+       - firefox #Firefox config with firefox connect
+       - make
+       - curl
+       - traceroute
+       - strace
+       - ack
+       - net-tools
+       - gcc
+       - automake
+       - autoconf
        - htop
        - git
        - ncdu
@@ -33,6 +46,17 @@
        - zsh
        - gpg
        - jq
+       - pass
+       - python3
+       - python3-pip
+
+    #AWS CLI
+    - name: 'Install AWS CLI'
+      tags: 'aws-cli'
+      become: 'yes'
+      pip: >
+       name=awscli
+       state=latest
 
     #conf
     - name: Add configuration files
@@ -45,3 +69,4 @@
       with_items:
         ['.zshrc','.vimrc', '.tmux.conf', '.gitconfig']
 
+# To do : add firewall
