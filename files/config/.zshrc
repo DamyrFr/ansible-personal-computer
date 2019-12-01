@@ -17,6 +17,7 @@ autoload -U url-quote-magic #URL completion
 zle -N self-insert url-quote-magic
 bindkey "^[m" copy-prev-shell-word
 compinit
+bindkey -e #For shortcuts
 #set -g default-terminal "screen-256color"
 
 #===================={  Setopt  }====================
