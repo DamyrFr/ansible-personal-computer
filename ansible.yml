@@ -7,48 +7,39 @@
     timezone: 'Europe/Paris'
 
   tasks:
-    #DEFAULT USER
-    - name: Create user {{ user }}
-      user: name={{ user }}
-            comment={{ user }}
-            shell=/bin/zsh
-
-    - name: Create sudo rules for user {{ user }}
-      lineinfile:
-       dest: /etc/sudoers
-       state: present
-       regexp: '^%{{ user }}'
-       line: '%{{ user }} ALL=(ALL) NOPASSWD: ALL'
-       validate: 'visudo -cf %s'
-
     #Paquets
     - name: install tools and stuff
-      apt: name={{ item }} state=present
-      with_items:
-       - vim
-       - ipcalc
-       - tcpdump
-       - dnsutils
-       - firefox #Firefox config with firefox connect
-       - make
-       - curl
-       - traceroute
-       - strace
-       - ack
-       - net-tools
-       - gcc
-       - automake
-       - autoconf
-       - htop
-       - git
-       - ncdu
-       - tmux
-       - zsh
-       - gpg
-       - jq
-       - pass
-       - python3
-       - python3-pip
+      apt:
+        pkg:
+          - vim
+          - ipcalc
+          - tcpdump
+          - dnsutils
+          - firefox-esr #Firefox config with firefox connect
+          - make
+          - curl
+          - sudo
+          - traceroute
+          - strace
+          - ack
+          - nmap
+          - net-tools
+          - gcc
+          - iptables
+          - automake
+          - autoconf
+          - htop
+          - git
+          - ncdu
+          - tmux
+          - zsh
+          - gpg
+          - jq
+          - pass
+          - python3
+          - python3-pip
+          - iptables-persistent
+        state: present
 
     #AWS CLI
     - name: 'Install AWS CLI'
@@ -69,4 +60,41 @@
       with_items:
         ['.zshrc','.vimrc', '.tmux.conf', '.gitconfig']
 
-# To do : add firewall
+    #DEFAULT USER
+    - name: Create user {{ user }}
+      user: name={{ user }}
+            comment={{ user }}
+            shell=/bin/zsh
+
+    - openssh_keypair:
+        path: "/home/{{ user }}/.ssh/id_ssh_ed"
+        type: ed25519
+
+    - name: Create sudo rules for user {{ user }}
+      lineinfile:
+       dest: /etc/sudoers
+       state: present
+       regexp: '^%{{ user }}'
+       line: '%{{ user }} ALL=(ALL) NOPASSWD: ALL'
+       validate: 'visudo -cf %s'
+
+     #Firewall
+    - name: Firewall rule - allow all loopback traffic
+      iptables:
+        action: append
+        chain: INPUT
+        in_interface: lo
+        jump: ACCEPT
+
+    - name: Firewall rule - allow established connections
+      iptables:
+        chain: INPUT
+        ctstate: ESTABLISHED,RELATED
+        jump: ACCEPT
+
+
+    - name: Firewall rule - drop any traffic without rule
+      iptables:
+        chain: INPUT
+        jump: DROP
+

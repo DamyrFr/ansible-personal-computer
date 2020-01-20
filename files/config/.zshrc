@@ -74,6 +74,8 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export EDITOR=/usr/bin/vim
 export GREP_COLOR=31
+export PASSWORD_STORE_GENERATED_LENGTH=32
+export AWS_VAULT_BACKEND=pass
 #===================={ Prompt }====================
 theme_precmd () {
         vcs_info
