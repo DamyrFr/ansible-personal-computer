@@ -4,10 +4,10 @@
 
   vars:
     user: thomas
+    custom_hostname: laptop
     timezone: 'Europe/Paris'
 
   tasks:
-    #Paquets
     - name: install tools and stuff
       apt:
         pkg:
@@ -41,7 +41,6 @@
           - iptables-persistent
         state: present
 
-    #AWS CLI
     - name: 'Install AWS CLI'
       tags: 'aws-cli'
       become: 'yes'
@@ -49,7 +48,25 @@
        name=awscli
        state=latest
 
-    #conf
+    - name: 'Install git precommit'
+      tags: 'precommit'
+      become: 'yes'
+      pip: >
+       name=pre-commit
+       state=latest
+
+    - name: 'Install detect secrets'
+      tags: 'detect-secrets'
+      become: 'yes'
+      pip: >
+       name=detect-secrets
+       state=latest
+
+    - name: Create user {{ user }}
+      user: name={{ user }}
+            comment={{ user }}
+            shell=/bin/zsh
+
     - name: Add configuration files
       copy:
         src: files/config/{{item}}
@@ -60,25 +77,19 @@
       with_items:
         ['.zshrc','.vimrc', '.tmux.conf', '.gitconfig']
 
-    #DEFAULT USER
-    - name: Create user {{ user }}
-      user: name={{ user }}
-            comment={{ user }}
-            shell=/bin/zsh
-
-    - openssh_keypair:
-        path: "/home/{{ user }}/.ssh/id_ssh_ed"
+    - name: Generate sshkey
+      openssh_keypair:
+        path: "/home/{{ user }}/.ssh/id_ssh_ed_test_ansible"
         type: ed25519
 
     - name: Create sudo rules for user {{ user }}
       lineinfile:
-       dest: /etc/sudoers
-       state: present
-       regexp: '^%{{ user }}'
-       line: '%{{ user }} ALL=(ALL) NOPASSWD: ALL'
-       validate: 'visudo -cf %s'
+        dest: /etc/sudoers
+        state: present
+        regexp: '^%{{ user }}'
+        line: '%{{ user }} ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
 
-     #Firewall
     - name: Firewall rule - allow all loopback traffic
       iptables:
         action: append
@@ -97,4 +108,3 @@
       iptables:
         chain: INPUT
         jump: DROP
-
