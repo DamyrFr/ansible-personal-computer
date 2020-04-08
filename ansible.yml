@@ -83,6 +83,7 @@
         type: ed25519
 
     - name: Create sudo rules for user {{ user }}
+      become: 'yes'
       lineinfile:
         dest: /etc/sudoers
         state: present
@@ -91,6 +92,7 @@
         validate: 'visudo -cf %s'
 
     - name: Firewall rule - allow all loopback traffic
+      become: 'yes'
       iptables:
         action: append
         chain: INPUT
@@ -98,6 +100,7 @@
         jump: ACCEPT
 
     - name: Firewall rule - allow established connections
+      become: 'yes'
       iptables:
         chain: INPUT
         ctstate: ESTABLISHED,RELATED
@@ -105,6 +108,7 @@
 
 
     - name: Firewall rule - drop any traffic without rule
+      become: 'yes'
       iptables:
         chain: INPUT
         jump: DROP
