@@ -27,3 +27,6 @@
     mode: '0644'
     owner: "{{ user }}"
     group: "{{ user }}"
+
+- name: Install vim plugins
+  shell: vim +PlugInstall +qall
