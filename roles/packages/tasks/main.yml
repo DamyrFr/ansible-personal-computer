@@ -1,5 +1,13 @@
 ---
+- name: Upgrade all packages to the latest version
+  become: 'yes'
+  apt:
+    name: "*"
+    state: latest
+    update_cache: yes
+
 - name: install tools and stuff
+  become: 'yes'
   apt:
     pkg:
       - vim
@@ -7,6 +15,7 @@
       - tcpdump
       - dnsutils
       - firefox-esr #Firefox config with firefox connect
+      - chromium
       - make
       - curl
       - sudo
