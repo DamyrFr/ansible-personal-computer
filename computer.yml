@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  remote_user: root
+
+  vars:
+    user: thomas
+    custom_hostname: laptop
+    timezone: 'Europe/Paris'
+
+  roles:
+    - packages
+    - user
+    - dotfiles
+    - security

@@ -1,0 +1,54 @@
+---
+- name: install tools and stuff
+  apt:
+    pkg:
+      - vim
+      - ipcalc
+      - tcpdump
+      - dnsutils
+      - firefox-esr #Firefox config with firefox connect
+      - make
+      - curl
+      - sudo
+      - traceroute
+      - strace
+      - ack
+      - nmap
+      - net-tools
+      - gcc
+      - iptables
+      - automake
+      - autoconf
+      - htop
+      - git
+      - ncdu
+      - tmux
+      - zsh
+      - gpg
+      - jq
+      - pass
+      - python3
+      - python3-pip
+      - iptables-persistent
+    state: present
+
+- name: 'Install AWS CLI'
+  tags: 'aws-cli'
+  become: 'yes'
+  pip: >
+   name=awscli
+   state=latest
+
+- name: 'Install git precommit'
+  tags: 'precommit'
+  become: 'yes'
+  pip: >
+   name=pre-commit
+   state=latest
+
+- name: 'Install detect secrets'
+  tags: 'detect-secrets'
+  become: 'yes'
+  pip: >
+   name=detect-secrets
+   state=latest

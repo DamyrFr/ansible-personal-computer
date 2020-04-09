@@ -1,0 +1,19 @@
+---
+- name: Create user {{ user }}
+  user: name={{ user }}
+        comment={{ user }}
+        shell=/bin/zsh
+
+- name: Generate sshkey
+  openssh_keypair:
+    path: "/home/{{ user }}/.ssh/id_ssh_ed_test_ansible"
+    type: ed25519
+
+- name: Create sudo rules for user {{ user }}
+  become: 'yes'
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%{{ user }}'
+    line: '%{{ user }} ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'

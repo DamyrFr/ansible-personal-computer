@@ -1,0 +1,10 @@
+---
+- name: Add configuration files
+  copy:
+    src: config/{{item}}
+    dest: "/home/{{ user }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+  with_items:
+    ['.zshrc','.vimrc', '.tmux.conf', '.gitconfig']
