@@ -39,6 +39,10 @@
       - python3
       - python3-pip
       - iptables-persistent
+      - virt-manager
+      - ruby-full
+      - libvirt-dev
+      - rsync
     state: present
 
 - name: 'Install AWS CLI'
@@ -61,3 +65,4 @@
   pip: >
    name=detect-secrets
    state=latest
+
