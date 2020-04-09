@@ -1,13 +1,9 @@
 ---
 - name: Create user {{ user }}
+  become: 'yes'
   user: name={{ user }}
         comment={{ user }}
         shell=/bin/zsh
-
-- name: Generate sshkey
-  openssh_keypair:
-    path: "/home/{{ user }}/.ssh/id_ssh_ed_test_ansible"
-    type: ed25519
 
 - name: Create sudo rules for user {{ user }}
   become: 'yes'
@@ -17,3 +13,21 @@
     regexp: '^%{{ user }}'
     line: '%{{ user }} ALL=(ALL) NOPASSWD: ALL'
     validate: 'visudo -cf %s'
+
+- name: Create ssh directory
+  become: 'yes'
+  file:
+    path: "/home/{{ user }}/.ssh"
+    state: directory
+    mode: '0755'
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: Generate sshkey
+  become: 'yes'
+  openssh_keypair:
+    path: "/home/{{ user }}/.ssh/id_ssh_ed_test_ansible"
+    type: ed25519
+    mode: '0400'
+    owner: "{{ user }}"
+    group: "{{ user }}"

@@ -3,7 +3,7 @@
   remote_user: root
 
   vars:
-    user: thomas
+    user: damyr
     custom_hostname: laptop
     timezone: 'Europe/Paris'
 
