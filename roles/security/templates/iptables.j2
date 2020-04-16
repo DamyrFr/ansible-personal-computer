@@ -1,0 +1,30 @@
+# ansible managed, do not edit manually.
+#jinja2: trim_blocks: True
+*filter
+:INPUT DROP [1192:379335]
+{% if forward %}
+:FORWARD ACCEPT [0:0]
+{% else %}
+:FORWARD DROP [0:0]
+{% endif %}
+:OUTPUT DROP [5:324]
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m state --state INVALID -j DROP
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A FORWARD -m state --state INVALID -j DROP
+-A OUTPUT -o lo -j ACCEPT
+-A OUTPUT -m state --state INVALID -j DROP
+-A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 53 -m comment --comment DNS-TCP -j ACCEPT
+-A OUTPUT -p udp -m udp --dport 53 -m comment --comment DNS-UDP -j ACCEPT
+-A OUTPUT -p udp -m udp --dport 67:68 -m comment --comment DHCP -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 80 -m comment --comment HTTP -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 443 -m comment --comment HTTPS -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 465 -m comment --comment SMTPS -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 587 -m comment --comment SMTPS -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 993 -m comment --comment IMAPS -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 995 -m comment --comment POP3S -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 5222 -m comment --comment JABBER -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 8001 -m comment --comment IRC -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 8010 -m comment --comment "JABBER FT" -j ACCEPT
+COMMIT

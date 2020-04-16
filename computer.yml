@@ -4,6 +4,7 @@
 
   vars:
     user: damyr
+    forward: true
     custom_hostname: laptop
     timezone: 'Europe/Paris'
 

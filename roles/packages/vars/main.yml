@@ -1,0 +1,4 @@
+---
+vagrant_url_deb: "https://releases.hashicorp.com/vagrant/{{vagrant_version}}/vagrant_{{vagrant_version}}_{{ansible_architecture}}.deb"
+vagrant_tmp_dir: "/tmp/"
+vagrant_tmp_deb: "{{vagrant_tmp_dir}}/vagrant_{{vagrant_version}}.deb"
