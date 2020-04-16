@@ -15,6 +15,8 @@
 -A OUTPUT -o lo -j ACCEPT
 -A OUTPUT -m state --state INVALID -j DROP
 -A OUTPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 22 -m comment --comment SSH -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 222 -m comment --comment SSH -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 53 -m comment --comment DNS-TCP -j ACCEPT
 -A OUTPUT -p udp -m udp --dport 53 -m comment --comment DNS-UDP -j ACCEPT
 -A OUTPUT -p udp -m udp --dport 67:68 -m comment --comment DHCP -j ACCEPT
