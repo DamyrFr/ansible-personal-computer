@@ -1,7 +1,7 @@
 [user]
 	name = Thomas GERARDIN
 	email = thomas@anvir.fr
-	username = Damyr
+	username = DamyR
 [core]
 	editor = vim
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -29,4 +29,4 @@
 [sequence]
 	editor = interactive-rebase-tool
 [alias]
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lg = log  --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit

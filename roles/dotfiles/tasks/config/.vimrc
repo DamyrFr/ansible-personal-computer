@@ -50,6 +50,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'editorconfig/editorconfig-vim'
  Plug 'hashivim/vim-terraform'
  Plug 'kien/ctrlp.vim'
+ Plug 'tpope/vim-fugitive'
 call plug#end()
 let g:airline#extensions#tabline#enabled = 1
 let g:ctrlp_map = '<c-p>'
