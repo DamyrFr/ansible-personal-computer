@@ -9,7 +9,7 @@
     timezone: 'Europe/Paris'
 
   roles:
-    - packages
     - user
+    - packages
     - dotfiles
     - security

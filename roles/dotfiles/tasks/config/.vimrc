@@ -60,4 +60,4 @@ nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-n> :tabnew<CR>
 
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree

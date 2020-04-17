@@ -66,3 +66,7 @@
    name=detect-secrets
    state=latest
 
+- name: "Install tfenv"
+  git:
+    repo: "https://github.com/tfutils/tfenv.git"
+    dest: "/home/{{ user }}/.tfenv"
