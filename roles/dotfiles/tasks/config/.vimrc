@@ -2,14 +2,17 @@ runtime! debian.vim
 "set compatible
 filetype plugin indent on
 syntax on
-"set showcmd		" Show (partial) command in status line.
-"set showmatch		" Show matching brackets.
+set nocompatible
+set title
+set wrap
+set visualbell
+set noerrorbells
 set encoding=UTF-8
 set ignorecase		" Do case insensitive matching
 set smartcase		" Do smart case matching
-"set incsearch		" Incremental search
+set incsearch
+set hlsearch
 set autowrite		" Automatically save before commands like :next and :make
-"set hidden		" Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 set autoindent
 set ruler
@@ -17,11 +20,12 @@ set hlsearch
 set number
 set cursorline
 set laststatus=2
+set scrolloff=4
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 " needed for tmux
 set term=screen-256color
-colorscheme elflord
-
+syntax enable
+colorscheme slate
 if has("autocmd")
     autocmd! bufwritepost .vimrc source ~/.vimrc
 endif
@@ -30,13 +34,6 @@ endif
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
-
-"set rtp+=~/.vim/bundle/Vundle.vim/
-" call vundle#rc()
-" Plugin '.vim/bundle/nerdtree'
-" Plugin '.vim/bundle/vim-powerline'
-" Bundle 'nerdtree'
-" Bundle 'vim-powerline'
 call plug#begin('~/.vim/plugged')
  Plug 'ryanoasis/vim-devicons'
  Plug 'scrooloose/nerdtree'
@@ -50,13 +47,16 @@ call plug#begin('~/.vim/plugged')
  Plug 'hashivim/vim-terraform'
  Plug 'juliosueiras/vim-terraform-completion'
  Plug 'lervag/vimtex'
+ Plug 'editorconfig/editorconfig-vim'
+ Plug 'hashivim/vim-terraform'
+ Plug 'kien/ctrlp.vim'
 call plug#end()
-" :CocInstall coc-python
 let g:airline#extensions#tabline#enabled = 1
- "nnoremap <C-j> gT
- "nnoremap <C-k> gt
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 map <C-X> :NERDTreeToggle<CR>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-n> :tabnew<CR>
-nnoremap <C-w> :tabclose<CR>
+
+autocmd vimenter * NERDTree
