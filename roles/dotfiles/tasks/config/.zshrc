@@ -15,6 +15,7 @@ autoload colors; colors;
 autoload -U add-zsh-hook #ZSH hook system for update the prompt dynamicly
 autoload -U url-quote-magic #URL completion
 zle -N self-insert url-quote-magic
+zle -N edit-command-line
 bindkey "^[m" copy-prev-shell-word
 compinit
 bindkey -e #For shortcuts
@@ -76,6 +77,16 @@ export EDITOR=/usr/bin/vim
 export GREP_COLOR=31
 export PASSWORD_STORE_GENERATED_LENGTH=32
 export AWS_VAULT_BACKEND=pass
+export AWS_SDK_LOAD_CONFIG=true
+export PATH="$HOME/.tfenv/bin:$PATH"
+# Color on man
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
 #===================={ Prompt }====================
 theme_precmd () {
         vcs_info
@@ -161,6 +172,7 @@ alias gac="git add . && git commit -a -m "
 alias dtrash="docker run -it --rm -v /tmp:/tmp debian:latest /bin/bash"
 alias ks='ls'
 alias xs='cd'
+alias av='aws-vault'
 alias sl='ls'
 alias gitlab='ssh -i /home/thomas/.ssh/tgerardin.pem ubuntu@172.16.32.100'
 alias amy='ssh root@163.172.28.60 -p 222'
