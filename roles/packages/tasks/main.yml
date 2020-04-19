@@ -46,14 +46,12 @@
     state: present
 
 - name: "Install AWS CLI"
-  tags: "aws-cli"
   become: "yes"
   pip: >
    name=awscli
    state=latest
 
 - name: "Install git precommit"
-  tags: "precommit"
   become: "yes"
   pip: >
    name=pre-commit
@@ -72,3 +70,22 @@
     dest: "/home/{{ user }}/.tfenv"
   become: "yes"
   become_user: "{{ user }}"
+
+- name: "Check if Vagrant is already installed"
+  command: dpkg-query -l vagrant
+  register: deb_check
+
+- name: "Download vagrant"
+  get_url: url={{ vagrant_url_deb }} dest={{ vagrant_tmp_deb }}
+  when: deb_check.stdout.find('no packages found') != -1
+
+- name: "Install Vagrant"
+  become: "yes"
+  apt: deb={{ vagrant_tmp_deb }}
+  when: deb_check.stdout.find('no packages found') != -1
+
+- name: "Remove .deb file"
+  file:
+    path: "{{ vagrant_tmp_deb }}"
+    state: absent
+  when: deb_check.stdout.find('no packages found') != -1

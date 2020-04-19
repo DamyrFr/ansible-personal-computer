@@ -7,6 +7,9 @@
     forward: true
     custom_hostname: laptop
     timezone: 'Europe/Paris'
+    tmp_dir: "/tmp"
+    vagrant_version: "2.2.7"
+    architecture: "x86_64"
 
   roles:
     - user
