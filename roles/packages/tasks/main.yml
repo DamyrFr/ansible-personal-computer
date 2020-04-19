@@ -89,3 +89,9 @@
     path: "{{ vagrant_tmp_deb }}"
     state: absent
   when: deb_check.stdout.find('no packages found') != -1
+
+- name: "Install nokogiri (for Vagrant)"
+  become: "yes"
+  gem:
+    name: rake
+    state: latest
