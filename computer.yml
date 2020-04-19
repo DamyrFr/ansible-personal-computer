@@ -4,6 +4,7 @@
 
   vars:
     user: damyr
+    gui: true 
     forward: true
     custom_hostname: laptop
     timezone: 'Europe/Paris'
@@ -16,4 +17,6 @@
     - packages
     - dotfiles
     - security
-    - gnome
+    - include_role:
+      name: gnome
+      when: gui == true

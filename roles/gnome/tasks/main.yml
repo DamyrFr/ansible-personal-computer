@@ -1,5 +1,7 @@
 ---
 - name: "Copy wallpaper file"
+  become: "yes"
+  become_user: "{{ user }}"
   copy:
     src: "files/wallpaper.png" 
     dest: "/home/{{ user }}/.wallpaper.png"
@@ -7,7 +9,8 @@
     group: "{{ user }}"
 
 - name: "Set GNOME Wallpaper"
-  become_user: {{ damyr }}
+  become: "yes"
+  become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/background/picture-uri"
     value: "'file:///home/{{ user }}/.wallpaper.png'"
