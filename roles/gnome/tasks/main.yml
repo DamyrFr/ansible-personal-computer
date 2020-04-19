@@ -1,4 +1,17 @@
 ---
+- name: "Copy wallpaper file"
+  copy:
+    src: "files/wallpaper.png" 
+    dest: "/home/{{ user }}/.wallpaper.png"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: "Set GNOME Wallpaper"
+  become_user: {{ damyr }}
+  dconf:
+    key: "/org/gnome/desktop/background/picture-uri"
+    value: "'file:///home/{{ user }}/.wallpaper.png'"
+
 - name: "Gnome set theme"
   dconf:
     key: "/org/gnome/shell/extensions/user-theme/name"
