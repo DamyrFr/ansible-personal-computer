@@ -13,24 +13,19 @@ Warning : This code is build for Debian 9+ and Ubuntu.
 |   Variables   |   Types      | Description |
 | ------------- |:------------:| -----------:|
 |     user      |    string    | User name for my user |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+|     gui       |    bool      | Used to set if you need to configure GNOME 3 environment |
+|   forward     |    bool      | Used to set if you need to allow the FORWARD iptables tables |
+|custom_hostname|    string    | Custom hostname for the computer|
+|    timezone   |    string    | Current timezone for user |
+|    tmp_dir    |    string    | Temporary directory |
+|vagrant_version|    string    | Version of Vagrant to use |
+| architecture  |    string    | Your computer infrastrucutre |
 
-  vars:
-    user: damyr
-    gui: true 
-    forward: true
-    custom_hostname: laptop
-    timezone: 'Europe/Paris'
-    tmp_dir: "/tmp"
-    vagrant_version: "2.2.7"
-    architecture: "x86_64"
 
-  roles:
-    - user
-    - packages
-    - dotfiles
-    - security
-    - include_role:
-      name: gnome
-      when: gui == true
+## Roles
+
+* User : create user, create ssh key and add it to sudoers
+* Packages : Install softwares, apt, pip, gem and Vagrant
+* Dotfiles : Deploy my dotfiles, .zshrc, .gitconfig, .tmux.conf
+* Security : Setup iptables rules make it permanent
+* gnome : if your set "gui" configure Gnome 3
