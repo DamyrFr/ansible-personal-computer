@@ -1,4 +1,11 @@
 ---
+- name: "Install Gnome3"
+  become: "yes"
+  apt:
+    pkg:
+      - gnome3
+    state: present
+
 - name: "Copy wallpaper file"
   become: "yes"
   become_user: "{{ user }}"
@@ -16,42 +23,56 @@
     value: "'file:///home/{{ user }}/.wallpaper.png'"
 
 - name: "Gnome set theme"
+  become: "yes"
+  become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/shell/extensions/user-theme/name"
     value: "'Arc-Dark'"
     state: present
 
 - name: "Gnome show date"
+  become: "yes"
+  become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/interface/clock-show-date"
     value: "true"
     state: present
 
 - name: "Gnome show battery percentage"
+  become: "yes"
+  become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/interface/show-battery-percentage"
     value: "true"
     state: present
 
 - name: "Gnome show seconds"
+  become: "yes"
+  become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/interface/clock-show-seconds"
     value: "true"
     state: present
 
 - name: "Gnome set GTK theme"
+  become: "yes"
+  become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/interface/gtk-theme"
     value: "'Arc-Darker'"
     state: present
 
 - name: "Gnome set icons"
+  become: "yes"
+  become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/interface/icon-theme"
     value: "'Arc'"
     state: present
 
 - name: "Set prefered apps"
+  become: "yes"
+  become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/shell/favorite-apps"
     value: "['firefox-esr.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop']"
