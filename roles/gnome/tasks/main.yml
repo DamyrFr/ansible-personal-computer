@@ -1,0 +1,42 @@
+---
+- name: "Gnome set theme"
+  dconf:
+    key: "/org/gnome/shell/extensions/user-theme/name"
+    value: "'Arc-Dark'"
+    state: present
+
+- name: "Gnome show date"
+  dconf:
+    key: "/org/gnome/desktop/interface/clock-show-date"
+    value: "true"
+    state: present
+
+- name: "Gnome show battery percentage"
+  dconf:
+    key: "/org/gnome/desktop/interface/show-battery-percentage"
+    value: "true"
+    state: present
+
+- name: "Gnome show seconds"
+  dconf:
+    key: "/org/gnome/desktop/interface/clock-show-seconds"
+    value: "true"
+    state: present
+
+- name: "Gnome set GTK theme"
+  dconf:
+    key: "/org/gnome/desktop/interface/gtk-theme"
+    value: "'Arc-Darker'"
+    state: present
+
+- name: "Gnome set icons"
+  dconf:
+    key: "/org/gnome/desktop/interface/icon-theme"
+    value: "'Arc'"
+    state: present
+
+- name: "Set prefered apps"
+  dconf:
+    key: "/org/gnome/shell/favorite-apps"
+    value: "['firefox-esr.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop']"
+    state: present
