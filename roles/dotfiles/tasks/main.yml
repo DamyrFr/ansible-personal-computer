@@ -29,4 +29,4 @@
     group: "{{ user }}"
 
 - name: Install vim plugins
-  shell: vim +PlugInstall +qall
+  shell: "vim +'PlugInstall --sync' +qall &> /dev/null < /dev/tty"

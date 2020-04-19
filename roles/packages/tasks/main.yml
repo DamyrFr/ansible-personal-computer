@@ -1,13 +1,13 @@
 ---
-- name: Upgrade all packages to the latest version
-  become: 'yes'
+- name: "Upgrade all packages to the latest version"
+  become: "yes"
   apt:
     name: "*"
     state: latest
     update_cache: yes
 
 - name: install tools and stuff
-  become: 'yes'
+  become: "yes"
   apt:
     pkg:
       - vim
@@ -45,23 +45,23 @@
       - rsync
     state: present
 
-- name: 'Install AWS CLI'
-  tags: 'aws-cli'
-  become: 'yes'
+- name: "Install AWS CLI"
+  tags: "aws-cli"
+  become: "yes"
   pip: >
    name=awscli
    state=latest
 
-- name: 'Install git precommit'
-  tags: 'precommit'
-  become: 'yes'
+- name: "Install git precommit"
+  tags: "precommit"
+  become: "yes"
   pip: >
    name=pre-commit
    state=latest
 
-- name: 'Install detect secrets'
-  tags: 'detect-secrets'
-  become: 'yes'
+- name: "Install detect secrets"
+  tags: "detect-secrets"
+  become: "yes"
   pip: >
    name=detect-secrets
    state=latest
@@ -70,3 +70,5 @@
   git:
     repo: "https://github.com/tfutils/tfenv.git"
     dest: "/home/{{ user }}/.tfenv"
+  become: "yes"
+  become_user: "{{ user }}"
