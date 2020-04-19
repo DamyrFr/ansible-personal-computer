@@ -45,6 +45,7 @@
       - rsync
       - libgtk-3-dev
       - arc-theme
+      - most
     state: present
 
 - name: "Install AWS CLI"

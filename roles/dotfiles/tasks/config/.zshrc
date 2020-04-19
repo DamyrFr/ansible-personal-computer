@@ -69,7 +69,7 @@ zstyle ':vcs_info:*' enable git cvs svn
 
 #===================={ export }====================
 export EDITOR="vim"
-export PAGER="less"
+export PAGER="most" #Needed for man color
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
@@ -138,7 +138,7 @@ alias fuck='sudo !!'
 alias psg='ps aux | grep'
 alias t='tmux -u'
 alias p='ping -c 3'
-alias s='ssh -l root'
+alias s='ssh'
 alias d='docker'
 alias l='ls -lra --color=auto'
 alias v='vim'
@@ -174,9 +174,5 @@ alias ks='ls'
 alias xs='cd'
 alias av='aws-vault'
 alias sl='ls'
-alias gitlab='ssh -i /home/thomas/.ssh/tgerardin.pem ubuntu@172.16.32.100'
-alias amy='ssh root@163.172.28.60 -p 222'
-alias atl='ssh root@62.210.108.156 -p 222'
-alias julie='ssh ubuntu@louhde.tech -p 2222'
 alias mplayerfb='mplayer -vo fbdev -vf scale=1024:768'
 alias grep='grep --color=auto'
