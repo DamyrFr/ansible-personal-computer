@@ -1,16 +1,22 @@
 ---
-- name: Add configuration files
+- name: "Add configuration files"
   become: 'yes'
   copy:
-    src: config/{{item}}
+    src: ../files/{{item}}
     dest: "/home/{{ user }}"
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0644
   with_items:
-    ['.zshrc','.vimrc', '.tmux.conf', '.gitconfig']
+    ['.zshrc','.vimrc', '.tmux.conf']
 
-- name: Vim plug 
+- name: "Configure Gitfile"
+  template: src=gitconig.j2 dest="/home/{{ user }}/.gitconig"
+  become: true
+  become_user: "{{ user }}"
+
+
+- name: "Vim plug"
   become: 'yes'
   file:
     path: "/home/{{ user }}/.vim/autoload"
@@ -19,7 +25,7 @@
     owner: "{{ user }}"
     group: "{{ user }}"
 
-- name: Download vim module Plug
+- name: "Download vim module Plug"
   become: 'yes'
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -28,5 +34,5 @@
     owner: "{{ user }}"
     group: "{{ user }}"
 
-- name: Install vim plugins
+- name: "Install vim plugins"
   shell: "vim +'PlugInstall --sync' +qall &> /dev/null < /dev/tty"
