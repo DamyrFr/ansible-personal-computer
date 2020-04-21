@@ -3,7 +3,7 @@
   become: "yes"
   apt:
     pkg:
-      - gnome3
+      - gnome
     state: present
 
 - name: "Copy wallpaper file"
