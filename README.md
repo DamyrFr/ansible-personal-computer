@@ -29,3 +29,7 @@ Warning : This code is build for Debian 9+ and Ubuntu.
 * Dotfiles : Deploy my dotfiles, .zshrc, .gitconfig, .tmux.conf
 * Security : Setup iptables rules make it permanent
 * gnome : if your set "gui" configure Gnome 3
+
+## How configure your own user ?
+
+Create your own variable user files !
