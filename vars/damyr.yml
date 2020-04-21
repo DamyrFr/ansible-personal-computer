@@ -5,7 +5,7 @@ git_name: DamyR
 git_email: contact@damyr.fr
 gui: true 
 forward: true
-custom_hostname: laptop
+custom_hostname: brainfuck
 timezone: 'Europe/Paris'
 tmp_dir: "/tmp"
 vagrant_version: "2.2.7"

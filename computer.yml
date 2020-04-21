@@ -6,6 +6,7 @@
     - vars/damyr.yml
 
   roles:
+    - system
     - user
     - packages
     - dotfiles

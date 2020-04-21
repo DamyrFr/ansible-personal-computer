@@ -1,0 +1,11 @@
+---
+- name: "Update Hostname"
+  hostname:
+    name: "{{ custom_hostname }}"
+  become: true
+
+- name: "Set timezone"
+  timezone:
+    name: "{{ timezone }}"
+  become: true
+
