@@ -6,47 +6,12 @@
     state: latest
     update_cache: yes
 
-- name: install tools and stuff
+- name: "Install tools and stuff"
   become: "yes"
   apt:
-    pkg:
-      - vim
-      - ipcalc
-      - tcpdump
-      - dnsutils
-      - firefox-esr #Firefox config with firefox connect
-      - chromium
-      - make
-      - curl
-      - sudo
-      - traceroute
-      - strace
-      - ack
-      - nmap
-      - net-tools
-      - gcc
-      - iptables
-      - automake
-      - autoconf
-      - htop
-      - git
-      - ncdu
-      - tmux
-      - zsh
-      - gpg
-      - jq
-      - pass
-      - python3
-      - python3-pip
-      - iptables-persistent
-      - virt-manager
-      - ruby-full
-      - libvirt-dev
-      - rsync
-      - libgtk-3-dev
-      - arc-theme
-      - most
-    state: present
+    name: "{{ packages }}"
+    state: latest
+    autoclean: yes
 
 - name: "Install AWS CLI"
   become: "yes"

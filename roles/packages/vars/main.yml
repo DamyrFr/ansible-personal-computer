@@ -1,3 +1,41 @@
 ---
 vagrant_url_deb: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_{{ architecture }}.deb"
 vagrant_tmp_deb: "{{ tmp_dir }}/vagrant_{{vagrant_version}}.deb"
+packages:
+      - vim
+      - ipcalc
+      - tcpdump
+      - dnsutils
+      - firefox-esr #Firefox config with firefox connect
+      - chromium
+      - make
+      - curl
+      - sudo
+      - traceroute
+      - strace
+      - ack
+      - nmap
+      - net-tools
+      - gcc
+      - iptables
+      - automake
+      - autoconf
+      - htop
+      - git
+      - ncdu
+      - tmux
+      - zsh
+      - gpg
+      - jq
+      - pass
+      - python3
+      - python3-pip
+      - iptables-persistent
+      - virt-manager
+      - ruby-full
+      - libvirt-dev
+      - rsync
+      - libgtk-3-dev
+      - arc-theme
+      - most
+      - tlp
