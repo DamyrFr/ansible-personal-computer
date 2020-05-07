@@ -133,7 +133,7 @@ function commit {
 }
 
 #===================={ alias }====================
-alias co='commit'
+alias co='git commit'
 alias fuck='sudo !!'
 alias psg='ps aux | grep'
 alias t='tmux -u'
@@ -176,3 +176,4 @@ alias av='aws-vault'
 alias sl='ls'
 alias mplayerfb='mplayer -vo fbdev -vf scale=1024:768'
 alias grep='grep --color=auto'
+alias pr='pass generate -i'
