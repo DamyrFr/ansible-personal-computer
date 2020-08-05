@@ -22,6 +22,7 @@
 -A OUTPUT -p udp -m udp --dport 67:68 -m comment --comment DHCP -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 80 -m comment --comment HTTP -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 443 -m comment --comment HTTPS -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 6443 -m comment --comment K8S -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 465 -m comment --comment SMTPS -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 587 -m comment --comment SMTPS -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 993 -m comment --comment IMAPS -j ACCEPT
