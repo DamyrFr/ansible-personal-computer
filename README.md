@@ -32,4 +32,8 @@ Warning : This code is build for Debian 9+.
 
 ## How configure your own user ?
 
-Create your own variable user files ! Or fork it for more possibilities ;) 
+Create your own variable user files ! Or fork it for more possibilities ;)
+
+## If you juste need my dotfiles
+
+Checkout `./roles/dotfiles/files/`
