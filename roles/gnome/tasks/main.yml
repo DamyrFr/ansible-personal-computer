@@ -72,6 +72,12 @@
   apt:
     deb: "{{ tmp_dir }}/paper_icon.deb"
 
+- name: "Remove package archive"
+  become: "yes"
+  file:
+    path: "{{ tmp_dir }}/paper_icon.deb"
+    state: absent
+
 - name: "Gnome set icons"
   become: "yes"
   become_user: "{{ user }}"
