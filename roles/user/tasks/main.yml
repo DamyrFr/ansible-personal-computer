@@ -26,7 +26,7 @@
 - name: Generate sshkey
   become: 'yes'
   openssh_keypair:
-    path: "/home/{{ user }}/.ssh/id_ssh_ed_test_ansible"
+    path: "/home/{{ user }}/.ssh/id_{{ user }}_{{ custom_hostname }}"
     type: ed25519
     mode: '0400'
     owner: "{{ user }}"
