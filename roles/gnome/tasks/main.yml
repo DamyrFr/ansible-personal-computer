@@ -62,12 +62,22 @@
     value: "'Arc-Darker'"
     state: present
 
+- name: "Download icons (Paper)"
+  get_url:
+    url: "{{ url_deb_icons }}"
+    dest: "{{ tmp_dir }}/paper_icon.deb"
+
+- name: "Install icons (Paper)"
+  become: "yes"
+  apt:
+    deb: "{{ tmp_dir }}/paper_icon.deb"
+
 - name: "Gnome set icons"
   become: "yes"
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/interface/icon-theme"
-    value: "'Arc'"
+    value: "'Paper'"
     state: present
 
 - name: "Set prefered apps"
