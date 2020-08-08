@@ -22,7 +22,9 @@ let g:airline_powerline_fonts = 1
 " needed for tmux
 set term=screen-256color
 colorscheme elflord
-
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 " sync open file with NERDTree
 " " " Check if NERDTree is open or active
 function! IsNERDTreeOpen()        
