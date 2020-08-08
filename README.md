@@ -2,11 +2,11 @@
 
 All my configuration files and Debian config by code !
 
-Ansible version : `ansible 2.9.6`
+Ansible version > `ansible 2.9.X`
 
 Build for deploy my environment on laptop, PC and GNU/Linux bastion.
 
-Warning : This code is build for Debian 9+ and Ubuntu.
+Warning : This code is build for Debian 9+.
 
 ## Inputs 
 
@@ -32,4 +32,4 @@ Warning : This code is build for Debian 9+ and Ubuntu.
 
 ## How configure your own user ?
 
-Create your own variable user files !
+Create your own variable user files ! Or fork it for more possibilities ;) 
