@@ -39,3 +39,6 @@ packages:
       - arc-theme
       - most
       - tlp
+      - scdaemon
+      - pcscd
+      - dirmngr
