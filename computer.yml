@@ -3,7 +3,7 @@
   remote_user: root
 
   vars_files:
-    - vars/damyr.yml
+    - vars/user.yml
 
   roles:
     - system
