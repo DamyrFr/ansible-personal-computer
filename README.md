@@ -8,7 +8,7 @@ Build for deploy my environment on laptop, PC and GNU/Linux bastion.
 
 Warning : This code is build for Debian 9+.
 
-## Inputs 
+## Inputs (vars/user.yml) 
 
 |   Variables   |   Types      | Description |
 | ------------- |:------------:| -----------:|
