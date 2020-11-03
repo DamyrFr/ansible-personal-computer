@@ -15,7 +15,6 @@
   become: true
   become_user: "{{ user }}"
 
-
 - name: "Vim plug"
   become: 'yes'
   file:
