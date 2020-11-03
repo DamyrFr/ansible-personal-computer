@@ -2,11 +2,11 @@
 user: thomas
 git_username: Thomas 
 git_name: DamyrFr
-git_email: contact@damyr.fr
+git_email: thomas@anvir.fr
 gui: true 
 forward: true
 custom_hostname: brainfuck
 timezone: 'Europe/Paris'
 tmp_dir: "/tmp"
-vagrant_version: "2.2.7"
+vagrant_version: "2.2.10"
 architecture: "x86_64"

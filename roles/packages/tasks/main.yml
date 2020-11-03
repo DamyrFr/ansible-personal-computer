@@ -46,23 +46,23 @@
   become_user: "{{ user }}"
 
 - name: "Check if Vagrant is already installed"
-  command: dpkg-query -l vagrant
-  register: deb_check
+  package_facts:
+    manager: apt
 
 - name: "Download vagrant"
   get_url: url={{ vagrant_url_deb }} dest={{ vagrant_tmp_deb }}
-  when: deb_check.stdout.find('no packages found') != -1
+  when: "'vagrant' in ansible_facts.packages"
 
 - name: "Install Vagrant"
   become: "yes"
   apt: deb={{ vagrant_tmp_deb }}
-  when: deb_check.stdout.find('no packages found') != -1
+  when: "'vagrant' in ansible_facts.packages"
 
 - name: "Remove .deb file"
   file:
     path: "{{ vagrant_tmp_deb }}"
     state: absent
-  when: deb_check.stdout.find('no packages found') != -1
+  when: "'vagrant' in ansible_facts.packages"
 
 - name: "Install nokogiri (for Vagrant)"
   become: "yes"
