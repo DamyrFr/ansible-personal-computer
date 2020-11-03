@@ -62,6 +62,14 @@
     value: "'Arc-Darker'"
     state: present
 
+- name: "Gnome set WM theme"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/desktop/wm/preferences/theme"
+    value: "'Arc-Darker'"
+    state: present
+
 - name: "Download icons (Paper)"
   get_url:
     url: "{{ url_deb_icons }}"
