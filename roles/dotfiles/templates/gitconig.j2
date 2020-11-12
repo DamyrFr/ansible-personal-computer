@@ -9,7 +9,7 @@
 [web]
 	browser      = firefox
 [color]
-	ui 	     = auto
+	ui 	    		 = auto
 [color "branch"]
 	current      = yellow bold
 	local        = green bold
@@ -25,8 +25,13 @@
 	changed      = yellow bold
 	untracked    = red bold
 [diff]
-	tool 	     = vimdiff
+	tool 	     	 = vimdiff
+	colorMoved 	 = zebra
 [sequence]
 	editor 	     = interactive-rebase-tool
 [alias]
-	lg 	     = log  --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lg 	     		 = log  --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[pull]
+  rebase			 = true
+[fetch]
+	prune				 = true
