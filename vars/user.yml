@@ -3,9 +3,10 @@ user: thomas
 git_username: Thomas 
 git_name: DamyrFr
 git_email: thomas@anvir.fr
-gui: true 
+gui: false
 forward: true
 custom_hostname: brainfuck
+debian_codename: "buster"
 timezone: 'Europe/Paris'
 tmp_dir: "/tmp"
 vagrant_version: "2.2.10"
