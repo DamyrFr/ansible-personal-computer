@@ -45,3 +45,4 @@ packages:
       - pcscd
       - dirmngr
       - fping
+      - youtube-dl
