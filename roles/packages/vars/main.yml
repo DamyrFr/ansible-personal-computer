@@ -46,3 +46,4 @@ packages:
       - dirmngr
       - fping
       - youtube-dl
+      - firmware-linux
