@@ -1,0 +1,32 @@
+---
+- name: "Set some kernel parameters"
+  become: true
+  lineinfile:
+    dest: /etc/sysctl.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+    - { regexp: '^net.ipv4.conf.all.rp_filter', line: 'net.ipv4.conf.all.rp_filter = 1' }
+    - { regexp: '^net.ipv4.conf.default.rp_filter', line: 'net.ipv4.conf.default.rp_filter = 1' }
+    - { regexp: '^net.ipv4.icmp_echo_ignore_broadcasts', line: 'net.ipv4.icmp_echo_ignore_broadcasts = 1' }
+    - { regexp: '^net.ipv4.conf.all.accept_source_route', line: 'net.ipv4.conf.all.accept_source_route = 0' }
+    - { regexp: '^net.ipv6.conf.all.accept_source_route', line: 'net.ipv6.conf.all.accept_source_route = 0' }
+    - { regexp: '^net.ipv4.conf.default.accept_source_route', line: 'net.ipv4.conf.default.accept_source_route = 0' }
+    - { regexp: '^net.ipv6.conf.default.accept_source_route', line: 'net.ipv6.conf.default.accept_source_route = 0' }
+    - { regexp: '^net.ipv4.conf.all.send_redirects', line: 'net.ipv4.conf.all.send_redirects = 0' }
+    - { regexp: '^net.ipv4.conf.default.send_redirects', line: 'net.ipv4.conf.default.send_redirects = 0' }
+    - { regexp: '^net.ipv4.tcp_syncookies', line: 'net.ipv4.tcp_syncookies = 1' }
+    - { regexp: '^net.ipv4.tcp_max_syn_backlog', line: 'net.ipv4.tcp_max_syn_backlog = 2048' }
+    - { regexp: '^net.ipv4.tcp_synack_retries', line: 'net.ipv4.tcp_synack_retries = 2' }
+    - { regexp: '^net.ipv4.tcp_syn_retries', line: 'net.ipv4.tcp_syn_retries = 5' }
+    - { regexp: '^net.ipv4.conf.all.log_martians', line: 'net.ipv4.conf.all.log_martians = 1' }
+    - { regexp: '^net.ipv4.icmp_ignore_bogus_error_responses', line: 'net.ipv4.icmp_ignore_bogus_error_responses = 1' }
+    - { regexp: '^net.ipv4.conf.all.accept_redirects', line: 'net.ipv4.conf.all.accept_redirects = 0' }
+    - { regexp: '^net.ipv6.conf.all.accept_redirects', line: 'net.ipv6.conf.all.accept_redirects = 0' }
+    - { regexp: '^net.ipv4.conf.default.accept_redirects', line: 'net.ipv4.conf.default.accept_redirects = 0' }
+    - { regexp: '^net.ipv6.conf.default.accept_redirects', line: 'net.ipv6.conf.default.accept_redirects = 0' }
+    - { regexp: '^net.ipv4.icmp_echo_ignore_all', line: 'net.ipv4.icmp_echo_ignore_all = 1' }
+
+- name: "Reload sysctl"
+  shell: sysctl -p
+  become: true

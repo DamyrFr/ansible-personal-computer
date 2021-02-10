@@ -4,3 +4,6 @@
 
 - name: rkhunter setup
   include_tasks: rkhunter.yml
+
+- name: sysctl network hardening
+  include_tasks: sysctl.yml
