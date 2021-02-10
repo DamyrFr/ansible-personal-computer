@@ -54,3 +54,4 @@ packages:
       - clamav
       - clamtk
       - rkhunter
+      - chkrootkit
