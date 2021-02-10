@@ -53,3 +53,4 @@ packages:
       - apparmor-utils
       - clamav
       - clamtk
+      - rkhunter
