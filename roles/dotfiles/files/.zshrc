@@ -128,10 +128,15 @@ extract () {
         exit 0
     fi
 }
+
 function commit {
     git commit -m "`echo "$*" | sed -e 's/^./\U&\E/g'`"
 }
 
+function checksec {
+		sudo rkhunter --checkall --cronjob
+		sudo chkrootkit > /tmp/chkrootkit.log
+}
 #===================={ alias }====================
 alias co='git commit'
 alias fuck='sudo !!'
