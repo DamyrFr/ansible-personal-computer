@@ -48,3 +48,6 @@ packages:
       - youtube-dl
       - firmware-linux
       - bijiben
+      - apparmor
+      - apparmor-profiles
+      - apparmor-utils
