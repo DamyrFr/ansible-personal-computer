@@ -1,0 +1,12 @@
+---
+- name: "Update login.defs for upgrade security logs level"
+  become: 'yes'
+  lineinfile:
+    path: /etc/login.defs
+    line: "{{ item }}"
+  with_items:
+    - "FAILLOG_ENAB        yes"
+    - "LOG_UNKFAIL_ENAB    no"
+    - "SYSLOG_SU_ENAB      yes"
+    - "SYSLOG_SG_ENAB      yes"
+    - "ENCRYPT_METHOD  SHA512"
