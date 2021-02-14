@@ -1,0 +1,36 @@
+---
+- name: "PAM password configuration"
+  become: 'yes'
+  lineinfile:
+    path: /etc/pam.d/common-password
+    line: "{{ item }}"
+  with_items:
+    - "password    requisite           pam_passwdqc.so min=disabled,disabled,8,8,8"
+    - "Format is min=N0,N1,N2,N3,N4 [min=disabled,24,11,8,7] where"
+
+- name: "PAM desactivate SU usage by default"
+  become: true
+  lineinfile:
+    dest: /etc/pam.d/su
+    regexp: "^auth       required pam_wheel.so"
+    line: "auth       required pam_wheel.so"
+
+- name: "PAM others"
+  become: 'yes'
+  lineinfile:
+    path: /etc/pam.d/other
+    line: "{{ item }}"
+  with_items:
+    - "auth     required       pam_securetty.so"
+    - "auth     required       pam_unix_auth.so"
+    - "auth     required       pam_warn.so"
+    - "auth     required       pam_deny.so"
+    - "account  required       pam_unix_acct.so"
+    - "account  required       pam_warn.so"
+    - "account  required       pam_deny.so"
+    - "password required       pam_unix_passwd.so"
+    - "password required       pam_warn.so"
+    - "password required       pam_deny.so"
+    - "session  required       pam_unix_session.so"
+    - "session  required       pam_warn.so"
+    - "session  required       pam_deny.so"
