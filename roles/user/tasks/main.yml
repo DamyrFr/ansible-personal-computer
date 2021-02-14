@@ -1,9 +1,17 @@
 ---
+- name: "Create group wheel (for security)"
+  become: 'yes'
+  group:
+    name: wheel
+    state: present
+
 - name: Create user {{ user }}
   become: 'yes'
-  user: name={{ user }}
-        comment={{ user }}
-        shell=/bin/zsh
+  user:
+    name: "{{ user }}"
+    comment: "{{ user }}"
+    groups: "{{ user }},wheel,cdrom,floppy,audio,dip,video,plugdev,netdev,bluetooth,lpadmin,scanner"
+    shell: "/bin/zsh"
 
 - name: Create sudo rules for user {{ user }}
   become: 'yes'
