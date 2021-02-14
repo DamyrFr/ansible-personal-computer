@@ -7,3 +7,9 @@
 
 - name: sysctl network hardening
   include_tasks: sysctl.yml
+
+- name: PAM hardening
+  include_tasks: pam.yml
+
+- name: Add log on profil by default
+  include_tasks: profil.yml
