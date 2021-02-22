@@ -9,3 +9,5 @@
     name: "{{ timezone }}"
   become: true
 
+- name: "DNS setup"
+  include_tasks: dns.yml

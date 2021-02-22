@@ -1,0 +1,26 @@
+---
+- name: "Disable NetworkManager DNS"
+  become: true
+  ini_file:
+    path: /etc/NetworkManager/NetworkManager.conf
+    state: present
+    no_extra_spaces: yes
+    section: main
+    option: dns
+    value: none
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - reload NetworkManager
+
+- name: "Deploy resolv.conf template"
+  become: true
+  template:
+    src: resolv.conf.j2
+    dest: /etc/resolv.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - reload NetworkManager
