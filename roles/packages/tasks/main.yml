@@ -110,3 +110,22 @@
     state: present
     update_cache: yes
   become: "yes"
+
+- name: "Add Spotify repository key"
+  apt_key:
+    url: "https://download.spotify.com/debian/pubkey_0D811D58.gpg" 
+    state: present
+  become: "yes"
+
+- name: "Add Spotify repository"
+  apt_repository:
+    repo: "deb http://repository.spotify.com stable non-free"
+    state: present
+  become: "yes"
+
+- name: "Install Spotify"
+  apt:
+    name: "spotify-client"
+    state: present
+    update_cache: yes
+  become: "yes"
