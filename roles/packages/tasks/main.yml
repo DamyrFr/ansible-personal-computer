@@ -87,7 +87,26 @@
 
 - name: "Install NodeJS"
   apt:
-    name: "nodejs={{ node_version }}"
+    name: "nodejs"
+    state: present
+    update_cache: yes
+  become: "yes"
+
+- name: "Add Google gcloud (gcp) repository key"
+  apt_key:
+    url: "https://packages.cloud.google.com/apt/doc/apt-key.gpg" 
+    state: present
+  become: "yes"
+
+- name: "Add Google gcloud (gcp) repository"
+  apt_repository:
+    repo: "deb https://packages.cloud.google.com/apt cloud-sdk main"
+    state: present
+  become: "yes"
+
+- name: "Install Google gcloud (gcp)"
+  apt:
+    name: "google-cloud-sdk"
     state: present
     update_cache: yes
   become: "yes"
