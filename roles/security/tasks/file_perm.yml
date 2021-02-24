@@ -1,0 +1,24 @@
+---
+- name: "Change file permissions : CUPS"
+  become: true
+  file:
+    path: /etc/cups/cupsd.conf
+    owner: root
+    group: root
+    mode: '0700'
+
+- name: "Change file permissions : Kernel configuration"
+  become: true
+  file:
+    path: /etc/sysctl.conf
+    owner: root
+    group: root
+    mode: '0600'
+
+- name: "Change file permissions : Sudo"
+  become: true
+  file:
+    path: /etc/sudoers
+    owner: root
+    group: root
+    mode: '0440'
