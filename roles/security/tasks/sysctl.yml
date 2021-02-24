@@ -26,6 +26,8 @@
     - { regexp: '^net.ipv4.conf.default.accept_redirects', line: 'net.ipv4.conf.default.accept_redirects = 0' }
     - { regexp: '^net.ipv6.conf.default.accept_redirects', line: 'net.ipv6.conf.default.accept_redirects = 0' }
     - { regexp: '^net.ipv4.icmp_echo_ignore_all', line: 'net.ipv4.icmp_echo_ignore_all = 1' }
+    - { regexp: '^kernel.core_uses_pid', line: 'kernel.core_uses_pid = 1' }
+    - { regexp: '^net.ipv4.conf.default.log_martians', line: 'net.ipv4.conf.default.log_martians = 1' }
 
 - name: "Reload sysctl"
   shell: sysctl -p
