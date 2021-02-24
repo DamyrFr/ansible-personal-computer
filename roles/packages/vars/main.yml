@@ -56,3 +56,8 @@ packages:
       - rkhunter
       - chkrootkit
       - libpam-passwdqc
+      - libpam-tmpdir
+      - apt-listbugs
+      - debsecan
+      - debsums
+      - needrestart
