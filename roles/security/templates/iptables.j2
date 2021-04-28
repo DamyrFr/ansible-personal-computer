@@ -27,6 +27,12 @@
 -A OUTPUT -p tcp -m tcp --dport 587 -m comment --comment SMTPS -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 993 -m comment --comment IMAPS -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 995 -m comment --comment POP3S -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 4569 -m comment --comment VPN -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 5060 -m comment --comment VPN -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 1194 -m comment --comment VPN -j ACCEPT
+-A OUTPUT -p udp -m udp --dport 4569 -m comment --comment VPN -j ACCEPT
+-A OUTPUT -p udp -m udp --dport 5060 -m comment --comment VPN -j ACCEPT
+-A OUTPUT -p udp -m udp --dport 1194 -m comment --comment VPN -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 5222 -m comment --comment JABBER -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 8001 -m comment --comment IRC -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 8010 -m comment --comment "JABBER FT" -j ACCEPT
