@@ -63,3 +63,5 @@ packages:
       - debsums
       - needrestart
       - kubectl
+      - network-manager-openvpn-gnome
+      - openvpn
