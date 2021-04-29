@@ -182,3 +182,7 @@ alias sl='ls'
 alias mplayerfb='mplayer -vo fbdev -vf scale=1024:768'
 alias grep='grep --color=auto'
 alias pr='pass generate -i'
+alias k='kubectl'
+#===================={ completion }====================
+source <(kubectl completion zsh)
+complete -F __start_kubectl k
