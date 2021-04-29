@@ -62,3 +62,4 @@ packages:
       - debsecan
       - debsums
       - needrestart
+      - kubectl
