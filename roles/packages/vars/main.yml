@@ -8,8 +8,6 @@ packages:
       - ipcalc
       - tcpdump
       - dnsutils
-      - firefox-esr #Firefox config with firefox connect
-      - chromium
       - make
       - curl
       - sudo
@@ -38,7 +36,6 @@ packages:
       - libvirt-dev
       - rsync
       - libgtk-3-dev
-      - arc-theme
       - most
       - tlp
       - fzf
@@ -63,5 +60,4 @@ packages:
       - debsums
       - needrestart
       - kubectl
-      - network-manager-openvpn-gnome
       - openvpn

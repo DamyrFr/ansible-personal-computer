@@ -1,10 +1,10 @@
 ---
-- name: "Install Gnome3"
+- name: "Install tools and stuff"
   become: "yes"
   apt:
-    pkg:
-      - gnome
-    state: present
+    name: "{{ packages }}"
+    state: latest
+    autoclean: yes
 
 - name: "Copy wallpaper file"
   become: "yes"
