@@ -1,0 +1,6 @@
+---
+- name: "Create alternative user"
+  include_tasks: users.yml
+
+- name: "Link dotfiles"
+  include_tasks: dotfiles.yml

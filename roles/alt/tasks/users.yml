@@ -1,0 +1,45 @@
+---
+- name: "Create group alt for alternative env"
+  become: 'yes'
+  group:
+    name: alt
+    state: present
+
+- name: Create user {{ item }}
+  become: 'yes'
+  user:
+    name: "{{ item }}"
+    comment: "{{ item }}"
+    groups: "{{ item }}, alt"
+    shell: "/bin/zsh"
+  loop: "{{ alt_env }}"
+
+- name: Create sudo rules for user {{ item }}
+  become: 'yes'
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%{{ item }}'
+    line: '%{{ item }} ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+  loop: "{{ alt_env }}"
+
+- name: Create ssh directory
+  become: 'yes'
+  file:
+    path: "/home/{{ item }}/.ssh"
+    state: directory
+    mode: '0755'
+    owner: "{{ item }}"
+    group: "{{ item }}"
+  loop: "{{ alt_env }}"
+
+- name: Generate sshkey
+  become: 'yes'
+  openssh_keypair:
+    path: "/home/{{ item }}/.ssh/id_{{ item }}_{{ custom_hostname }}"
+    type: ed25519
+    mode: '0400'
+    owner: "{{ item }}"
+    group: "{{ item }}"
+  loop: "{{ alt_env }}"
