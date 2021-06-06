@@ -160,6 +160,7 @@ alias pubip='wget -qO- ifconfig.co'
 alias python="python3"
 alias py="python3"
 alias pip="pip3"
+alias sw="sudo su"
 alias aptu='sudo apt update && sudo apt -y upgrade && sudo apt clean'
 alias apti='apt install'
 alias pgps="gpg2 --clearsign"
