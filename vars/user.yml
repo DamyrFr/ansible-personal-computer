@@ -3,7 +3,7 @@ user: thomas
 git_username: Thomas 
 git_name: DamyrFr
 git_email: thomas@anvir.fr
-gui: false
+gui: true
 forward: true
 custom_hostname: brainfuck
 debian_codename: "buster"
@@ -15,3 +15,5 @@ dns_servers:
   - "1.1.1.1"
   - "208.67.220.220"
   - "206.125.173.29"
+alt_env:
+  - sandbox
