@@ -21,6 +21,7 @@ Warning : This code is build for Debian 9+.
 |vagrant_version|    string    | Version of Vagrant to use |
 | architecture  |    string    | Your computer infrastrucutre |
 | dns_servers   | list(string) | List of DNS servers to set |
+|    alt_env    | list(string) | List of alternative user |
 
 ## Roles
 
