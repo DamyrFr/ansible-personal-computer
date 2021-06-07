@@ -10,7 +10,7 @@
   user:
     name: "{{ item }}"
     comment: "{{ item }}"
-    groups: "{{ item }}, alt"
+    groups: "alt"
     shell: "/bin/zsh"
   loop: "{{ alt_env }}"
 

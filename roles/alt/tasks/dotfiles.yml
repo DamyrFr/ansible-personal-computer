@@ -4,8 +4,6 @@
   file: 
     src: "/home/{{ user }}/.zshrc"
     dest: "/home/{{ item }}/.zshrc"
-    owner: "{{ item }}"
-    group: "{{ item }}"
     state: link
   loop: "{{ alt_env }}"
 
@@ -14,8 +12,6 @@
   file: 
     src: "/home/{{ user }}/.vimrc"
     dest: "/home/{{ item }}/.vimrc"
-    owner: "{{ item }}"
-    group: "{{ item }}"
     state: link
   loop: "{{ alt_env }}"
 
@@ -24,7 +20,5 @@
   file: 
     src: "/home/{{ user }}/.tmux.conf"
     dest: "/home/{{ item }}/.tmux.conf"
-    owner: "{{ item }}"
-    group: "{{ item }}"
     state: link
   loop: "{{ alt_env }}"
