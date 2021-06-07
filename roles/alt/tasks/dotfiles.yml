@@ -22,3 +22,11 @@
     dest: "/home/{{ item }}/.tmux.conf"
     state: link
   loop: "{{ alt_env }}"
+
+- name: "Create symlink for Git"
+  become: 'yes'
+  file: 
+    src: "/home/{{ user }}/.gitconfig"
+    dest: "/home/{{ item }}/.gitconfig"
+    state: link
+  loop: "{{ alt_env }}"

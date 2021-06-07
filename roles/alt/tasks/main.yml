@@ -4,3 +4,6 @@
 
 - name: "Link dotfiles"
   include_tasks: dotfiles.yml
+
+- name: "tfenv local"
+  include_tasks: tfenv.yml
