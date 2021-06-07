@@ -1,0 +1,9 @@
+---
+- name: "Create alternative user"
+  include_tasks: users.yml
+
+- name: "Link dotfiles"
+  include_tasks: dotfiles.yml
+
+- name: "tfenv local"
+  include_tasks: tfenv.yml

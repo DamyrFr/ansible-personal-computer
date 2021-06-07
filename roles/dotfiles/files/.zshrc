@@ -160,6 +160,7 @@ alias pubip='wget -qO- ifconfig.co'
 alias python="python3"
 alias py="python3"
 alias pip="pip3"
+alias sw="sudo su"
 alias aptu='sudo apt update && sudo apt -y upgrade && sudo apt clean'
 alias apti='apt install'
 alias pgps="gpg2 --clearsign"
@@ -182,3 +183,7 @@ alias sl='ls'
 alias mplayerfb='mplayer -vo fbdev -vf scale=1024:768'
 alias grep='grep --color=auto'
 alias pr='pass generate -i'
+alias k='kubectl'
+#===================={ completion }====================
+source <(kubectl completion zsh)
+complete -F __start_kubectl k
