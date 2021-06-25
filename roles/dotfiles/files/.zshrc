@@ -14,6 +14,7 @@ autoload -U select-word-style && select-word-style bash #https://stackoverflow.c
 autoload colors; colors;
 autoload -U add-zsh-hook #ZSH hook system for update the prompt dynamicly
 autoload -U url-quote-magic #URL completion
+autoload bashcompinit && bashcompinit #For AWS Complet
 zle -N self-insert url-quote-magic
 zle -N edit-command-line
 bindkey "^[m" copy-prev-shell-word
@@ -185,7 +186,12 @@ alias grep='grep --color=auto'
 alias pr='pass generate -i'
 alias k='kubectl'
 #===================={ completion }====================
+# Kube
 source <(kubectl completion zsh)
 complete -F __start_kubectl k
+# AWS
+complete -C '/usr/local/bin/aws_completer' aws
+# Scaleway CLI autocomplete initialization.
+eval "$(scw autocomplete script shell=zsh)"
 #======================{ direnv }=====================
 eval "$(direnv hook zsh)"
