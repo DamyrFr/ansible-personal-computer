@@ -24,6 +24,7 @@ packages:
       - git
       - ncdu
       - tmux
+      - direnv
       - zsh
       - gpg
       - jq
