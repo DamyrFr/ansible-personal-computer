@@ -5,7 +5,6 @@
 # _ / /_ ___) |  _  |  _ <| |___ 
 #(_)____|____/|_| |_|_| \_\\____|
 #
- 
 #===================={ Autoload }====================
 autoload -Uz vcs_info #Git status for prompt
 autoload -U colors && colors #load colors
@@ -21,7 +20,6 @@ bindkey "^[m" copy-prev-shell-word
 compinit
 bindkey -e #For shortcuts
 #set -g default-terminal "screen-256color"
-
 #===================={  Setopt  }====================
 #setopt correct #spelling correction for commands
 setopt multios #implicit tees or cats when multiple redirections are attempted
@@ -35,7 +33,6 @@ setopt complete_in_word #If unset, the cursor is set to the end of the word if c
 setopt always_to_end #If a completion is performed with the cursor within a word, and a full completion is inserted, the cursor is moved to the end of the word
 setopt AUTO_CD #If a command is issued that can’t be executed as a normal command, and the command is the name of a directory, perform the cd command to that directory
 setopt NO_BEEP #No system BEEP
-
 #===================={ zstyle }====================
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
@@ -67,7 +64,19 @@ zstyle ':vcs_info:*' actionformats '%F{5}%F{5}[%F{2}%b%F{3}|%F{1}%a%c%u%F{5}]%f 
 zstyle ':vcs_info:*' formats '%F{5}%F{5}[%F{2}%b%c%u%F{5}]%f '
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git cvs svn
-
+#===================={ plugin }====================
+source /usr/share/zplug/init.zsh
+zplug "nnao45/zsh-kubectl-completion"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "mattberther/zsh-pyenv"
+zplug "wfxr/forgit"
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+zplug load
 #===================={ export }====================
 export EDITOR="vim"
 export PAGER="most" #Needed for man color
