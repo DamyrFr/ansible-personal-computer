@@ -5,6 +5,12 @@
 # _ / /_ ___) |  _  |  _ <| |___ 
 #(_)____|____/|_| |_|_| \_\\____|
 #
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 #===================={ Autoload }====================
 autoload -Uz vcs_info #Git status for prompt
 autoload -U colors && colors #load colors
@@ -66,6 +72,7 @@ zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 zstyle ':vcs_info:*' enable git cvs svn
 #===================={ plugin }====================
 source /usr/share/zplug/init.zsh
+zplug romkatv/powerlevel10k, as:theme, depth:1
 zplug "nnao45/zsh-kubectl-completion"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "mattberther/zsh-pyenv"
@@ -204,3 +211,5 @@ complete -C '/usr/local/bin/aws_completer' aws
 eval "$(scw autocomplete script shell=zsh)"
 #======================{ direnv }=====================
 eval "$(direnv hook zsh)"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
