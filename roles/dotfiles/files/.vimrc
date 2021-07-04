@@ -67,6 +67,7 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 " :CocInstall coc-python
 let g:airline#extensions#tabline#enabled = 1
+let g:coc_disable_startup_warning = 1
  "nnoremap <C-j> gT
  "nnoremap <C-k> gt
 map <C-X> :NERDTreeToggle<CR>
