@@ -62,4 +62,5 @@ packages:
       - debsums
       - needrestart
       - kubectl
+      - kubectx
       - openvpn
