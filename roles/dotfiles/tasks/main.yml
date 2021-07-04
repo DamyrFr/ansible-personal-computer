@@ -8,7 +8,7 @@
     group: "{{ user }}"
     mode: 0644
   with_items:
-    ['.zshrc','.vimrc', '.tmux.conf']
+    ['.zshrc','.vimrc', '.tmux.conf', '.p10k.zsh']
 
 - name: "Configure Gitfile"
   template: src=gitconig.j2 dest="/home/{{ user }}/.gitconfig"
