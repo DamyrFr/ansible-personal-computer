@@ -16,8 +16,8 @@
   become: "yes"
   become_user: "{{ user }}"
   copy:
-    src: "files/wallpaper.png" 
-    dest: "/home/{{ user }}/.wallpaper.png"
+    src: "files/wallpaper.jpg" 
+    dest: "/home/{{ user }}/.wallpaper.jpg"
     owner: "{{ user }}"
     group: "{{ user }}"
 
@@ -26,7 +26,7 @@
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/background/picture-uri"
-    value: "'file:///home/{{ user }}/.wallpaper.png'"
+    value: "'file:///home/{{ user }}/.wallpaper.jpg'"
 
 - name: "Gnome set theme"
   become: "yes"

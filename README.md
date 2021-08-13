@@ -38,3 +38,7 @@ Create your own variable user files ! Or fork it for more possibilities ;)
 ## If you juste need my dotfiles
 
 Checkout `./roles/dotfiles/files/`
+
+## Credit for wallpaper
+
+[Emilien Muller](https://unsplash.com/@mil68)
