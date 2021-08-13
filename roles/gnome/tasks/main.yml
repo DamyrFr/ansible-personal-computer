@@ -38,12 +38,12 @@
     value: "true"
     state: present
 
-- name: "Gnome show battery percentage"
+- name: "Gnome date use 24h format"
   become: "yes"
   become_user: "{{ user }}"
   dconf:
-    key: "/org/gnome/desktop/interface/show-battery-percentage"
-    value: "true"
+    key: "/org/gnome/desktop/interface/clock-format"
+    value: "24h"
     state: present
 
 - name: "Gnome show seconds"
@@ -51,6 +51,14 @@
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/interface/clock-show-seconds"
+    value: "true"
+    state: present
+
+- name: "Gnome show battery percentage"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/desktop/interface/show-battery-percentage"
     value: "true"
     state: present
 
