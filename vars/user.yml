@@ -6,7 +6,7 @@ git_email: thomas@anvir.fr
 gui: true
 forward: true
 custom_hostname: brainfuck
-debian_codename: "buster"
+debian_codename: "bullseye"
 timezone: 'Europe/Paris'
 tmp_dir: "/tmp"
 vagrant_version: "2.2.10"
