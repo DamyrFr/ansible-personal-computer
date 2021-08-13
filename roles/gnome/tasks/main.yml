@@ -6,6 +6,12 @@
     state: latest
     autoclean: yes
 
+- name: "Remove tools (not needed, games etc.)"
+  become: "yes"
+  apt:
+    name: "{{ to_remove }}"
+    state: absent
+
 - name: "Copy wallpaper file"
   become: "yes"
   become_user: "{{ user }}"

@@ -6,3 +6,15 @@ packages:
       - virt-manager
       - arc-theme
       - network-manager-openvpn-gnome
+      - gnome-tweaks
+      - gnome-todo
+to_remove:
+			- gnome-robots
+			- gnome-music
+			- gnome-mahjongg
+			- gnome-logs
+			- gnome-mines
+			- gnome-nibbles
+			- gnome-taquin
+			- gnome-tetravex
+			- evolution 
