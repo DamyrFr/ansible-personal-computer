@@ -10,7 +10,7 @@
   user:
     name: "{{ user }}"
     comment: "{{ user }}"
-    groups: "{{ user }},wheel,cdrom,floppy,audio,dip,video,plugdev,netdev,bluetooth,lpadmin,scanner"
+    groups: "{{ user }},wheel,cdrom,floppy,audio,dip,video,plugdev,netdev,bluetooth,scanner"
     shell: "/bin/zsh"
 
 - name: Create sudo rules for user {{ user }}
