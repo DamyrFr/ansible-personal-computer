@@ -6,22 +6,26 @@ Ansible version > `ansible 2.9.X`
 
 Build for deploy my environment on laptop, PC and GNU/Linux bastion.
 
-Warning : This code is build for Debian 9+.
+Warning : This code is build for Debian.
+
+For versioning I follow this tag schema : {DEBIAN_MAJOR}.{MY_UPDATE}
+
+This is build to make new installation of my environment easier. All dosen't follow best practice for now.
 
 ## Inputs (vars/user.yml) 
 
-|   Variables   |   Types      | Description |
-| ------------- |:------------:| -----------:|
-|     user      |    string    | User name for my user |
-|     gui       |    bool      | Used to set if you need to configure GNOME 3 environment |
-|   forward     |    bool      | Used to set if you need to allow the FORWARD iptables tables |
-|custom_hostname|    string    | Custom hostname for the computer|
-|    timezone   |    string    | Current timezone for user |
-|    tmp_dir    |    string    | Temporary directory |
-|vagrant_version|    string    | Version of Vagrant to use |
-| architecture  |    string    | Your computer infrastrucutre |
-| dns_servers   | list(string) | List of DNS servers to set |
-|    alt_env    | list(string) | List of alternative user |
+|   Variables      |   Types      | Description |
+| -------------    |:------------:| -----------:|
+|     user         |    string    | User name for my user |
+|     gui          |    bool      | Used to set if you need to configure GNOME 3 environment |
+|   forward        |    bool      | Used to set if you need to allow the FORWARD iptables tables |
+|custom_hostname   |    string    | Custom hostname for the computer|
+|    timezone      |    string    | Current timezone for user |
+|    tmp_dir		   |    string    | Temporary directory |
+|{SOFTWARE}_version|    string    | Version of selected software to install |
+| architecture     |    string    | Your computer infrastrucutre |
+| dns_servers      | list(string) | List of DNS servers to set |
+|    alt_env       | list(string) | List of alternative user |
 
 ## Roles
 
