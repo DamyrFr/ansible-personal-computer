@@ -1,0 +1,33 @@
+---
+# All my config are sync by firefox, we just do an classic installation
+- name: "Download latest stable Firefox release (not ESR)"
+  get_url:
+    url: "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=fr"
+    dest: "{{ tmp_dir }}/Firefox.tar.bz2"
+    mode: '0440'
+
+- name: "Extract Firefox install"
+  become: "yes"
+  unarchive:
+    src: "{{ tmp_dir }}/Firefox.tar.bz2"
+    dest: "/opt/"
+
+- name: "Create symlink for exec Firefox"
+  become: "yes"
+  file:
+    src: "/opt/firefox/firefox"
+    dest: "/usr/local/bin/firefox"
+    state: link
+    
+- name: "Copy Application file"
+  become: "yes"
+  copy:
+    src: "files/firefox.desktop" 
+    dest: "/usr/share/applications/firefox.desktop"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: "Remove archive"
+  file:
+    path: "{{ tmp_dir }}/Firefox.tar.bz2"
+    state: absent
