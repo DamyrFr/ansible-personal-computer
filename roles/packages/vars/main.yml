@@ -61,6 +61,10 @@ packages:
       - debsecan
       - debsums
       - needrestart
+      - cups
       - kubectl
-      - kubectx
       - openvpn
+      - spotify-client
+      - google-cloud-sdk
+      - nodejs
+      - vlc
