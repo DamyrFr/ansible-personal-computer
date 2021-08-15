@@ -1,0 +1,103 @@
+---
+- name: "Set GNOME Wallpaper"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/desktop/background/picture-uri"
+    value: "'file:///home/{{ user }}/.wallpaper.jpg'"
+
+- name: "Gnome show date"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/desktop/interface/clock-show-date"
+    value: "true"
+    state: present
+
+- name: "Gnome date use 24h format"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/desktop/interface/clock-format"
+    value: "'24h'"
+    state: present
+
+- name: "Gnome show seconds"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/desktop/interface/clock-show-seconds"
+    value: "true"
+    state: present
+
+- name: "Gnome show battery percentage"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/desktop/interface/show-battery-percentage"
+    value: "true"
+    state: present
+
+- name: "Gnome set plugins"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/shell/enabled-extensions"
+    value: "['horizontal-workspaces@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com']"
+    state: present
+
+- name: "Gnome set favApp"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/shell/favorite-apps"
+    value: "['org.gnome.Terminal.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop']"
+    state: present
+
+- name: "Gnome set theme"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/shell/extensions/user-theme/name"
+    value: "'Arc-Dark'"
+    state: present
+
+- name: "Gnome set user theme"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/shell/extensions/user-theme/name"
+    value: "'Arc-Dark'"
+    state: present
+
+- name: "Gnome set GTK theme"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/desktop/interface/gtk-theme"
+    value: "'Arc-Darker'"
+    state: present
+
+- name: "Gnome set WM theme"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/desktop/wm/preferences/theme"
+    value: "'Arc-Darker'"
+    state: present
+
+- name: "Nautilus set default filter"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/nautilus/preferences/search-filter-time-type"
+    value: "'last_modified'"
+    state: present
+
+- name: "Nautilus set default view"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/nautilus/preferences/default-folder-viewer"
+    value: "'icon-view'"
+    state: present

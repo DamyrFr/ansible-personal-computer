@@ -1,20 +1,20 @@
 ---
 url_deb_icons: "https://launchpadlibrarian.net/468844787/paper-icon-theme_1.5.728-202003121505~daily~ubuntu18.04.1_all.deb"
 packages:
-      - firefox-esr #Firefox config with firefox connect
-      - chromium
       - virt-manager
       - arc-theme
       - network-manager-openvpn-gnome
       - gnome-tweaks
       - gnome-todo
+      - gnome-boxes
 to_remove:
-			- gnome-robots
-			- gnome-music
-			- gnome-mahjongg
-			- gnome-logs
-			- gnome-mines
-			- gnome-nibbles
-			- gnome-taquin
-			- gnome-tetravex
-			- evolution 
+      - firefox-esr #I use classic FF not ESR
+      - gnome-robots
+      - gnome-music
+      - gnome-mahjongg
+      - gnome-logs
+      - gnome-mines
+      - gnome-nibbles
+      - gnome-taquin
+      - gnome-tetravex
+      - evolution 
