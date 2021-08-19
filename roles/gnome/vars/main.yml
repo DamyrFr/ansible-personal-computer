@@ -7,6 +7,7 @@ packages:
       - gnome-tweaks
       - gnome-todo
       - gnome-boxes
+      - vim-gtk # To have the clipboard feature enable
 to_remove:
       - firefox-esr #I use classic FF not ESR
       - gnome-robots
@@ -18,3 +19,4 @@ to_remove:
       - gnome-taquin
       - gnome-tetravex
       - evolution 
+      - vim

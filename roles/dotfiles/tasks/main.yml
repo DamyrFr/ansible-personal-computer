@@ -44,3 +44,6 @@
 
 - name: "Install vim plugins"
   shell: "vim +'PlugInstall --sync' +qall &> /dev/null < /dev/tty"
+
+- name: "Install vim coc plugin"
+  shell: "vim +'CocInstall coc-pyright coc-json' +qall &> /dev/null < /dev/tty"

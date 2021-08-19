@@ -14,13 +14,12 @@ set number
 set cursorline
 set laststatus=2
 set guifont=DroidSansMono\ Nerd\ Font\ 11
-let g:airline_powerline_fonts = 1
-" needed for tmux
 set term=screen-256color
 colorscheme elflord
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set clipboard=unnamedplus
 " sync open file with NERDTree
 " " " Check if NERDTree is open or active
 function! IsNERDTreeOpen()        
@@ -46,27 +45,25 @@ call plug#begin('~/.vim/plugged')
  Plug 'Xuyuanp/nerdtree-git-plugin'
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
+ Plug 'preservim/tagbar'
  Plug 'Shougo/vimproc.vim', {'do' : 'make'}
- Plug 'osyo-manga/vim-over' 
  Plug 'hashivim/vim-terraform'
- Plug 'juliosueiras/vim-terraform-completion'
- Plug 'lervag/vimtex'
  Plug 'ctrlpvim/ctrlp.vim'
- Plug 'christoomey/vim-tmux-navigator'
- Plug 'morhetz/gruvbox'
  Plug 'airblade/vim-gitgutter'
  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
  Plug 'ryanoasis/vim-devicons'
  Plug 'scrooloose/nerdtree'
 call plug#end()
+
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:coc_disable_startup_warning = 1
+let g:ctrlp_max_height = 20
+let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
+
 inoremap <silent><expr> <c-space> coc#refresh()
+
 map <C-X> :NERDTreeToggle<CR>
-if executable('terraform-ls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'terraform-ls',
-        \ 'cmd': {server_info->['terraform-ls', 'serve']},
-        \ 'whitelist': ['terraform'],
-        \ })
-endif
+map <C-N> :tabnew<CR>
+map <C-Q> :tabclose<CR>
+map <C-T> :TagbarToggle<CR>
