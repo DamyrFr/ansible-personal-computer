@@ -10,6 +10,15 @@
   with_items:
     ['.zshrc','.vimrc', '.tmux.conf', '.p10k.zsh']
 
+- name: "Add configuration files"
+  become: 'yes'
+  copy:
+    src: ../files/coc-settings.json
+    dest: "/home/.vim/coc-settings.json"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+
 - name: "Configure Gitfile"
   template: src=gitconig.j2 dest="/home/{{ user }}/.gitconfig"
   become: true

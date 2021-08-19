@@ -11,6 +11,18 @@
     state: present
   become: "yes"
 
+- name: "Add HashiCorp (gcp) repository key"
+  apt_key:
+    url: "https://apt.releases.hashicorp.com/gpg" 
+    state: present
+  become: "yes"
+
+- name: "Add HashiCorp (gcp) repository"
+  apt_repository:
+    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ debian_codename }} main"
+    state: present
+  become: "yes"
+
 - name: "Upgrade all packages to the latest version"
   become: "yes"
   apt:

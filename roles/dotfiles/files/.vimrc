@@ -2,14 +2,10 @@ runtime! debian.vim
 "set compatible
 filetype plugin indent on
 syntax on
-"set showcmd		" Show (partial) command in status line.
-"set showmatch		" Show matching brackets.
 set encoding=UTF-8
 set ignorecase		" Do case insensitive matching
 set smartcase		" Do smart case matching
-"set incsearch		" Incremental search
 set autowrite		" Automatically save before commands like :next and :make
-"set hidden		" Hide buffers when they are abandoned
 set mouse=a		" Enable mouse usage (all modes)
 set autoindent
 set ruler
@@ -40,15 +36,13 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
-"set rtp+=~/.vim/bundle/Vundle.vim/
-" call vundle#rc()
-" Plugin '.vim/bundle/nerdtree'
-" Plugin '.vim/bundle/vim-powerline'
-" Bundle 'nerdtree'
-" Bundle 'vim-powerline'
 call plug#begin('~/.vim/plugged')
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+ Plug 'prabirshrestha/async.vim'
+ Plug 'prabirshrestha/vim-lsp'
+ Plug 'prabirshrestha/asyncomplete.vim'
+ Plug 'prabirshrestha/asyncomplete-lsp.vim'
  Plug 'Xuyuanp/nerdtree-git-plugin'
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
@@ -65,12 +59,14 @@ call plug#begin('~/.vim/plugged')
  Plug 'ryanoasis/vim-devicons'
  Plug 'scrooloose/nerdtree'
 call plug#end()
-" :CocInstall coc-python
 let g:airline#extensions#tabline#enabled = 1
 let g:coc_disable_startup_warning = 1
- "nnoremap <C-j> gT
- "nnoremap <C-k> gt
+inoremap <silent><expr> <c-space> coc#refresh()
 map <C-X> :NERDTreeToggle<CR>
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-nnoremap <C-n> :tabnew<CR>
+if executable('terraform-ls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'terraform-ls',
+        \ 'cmd': {server_info->['terraform-ls', 'serve']},
+        \ 'whitelist': ['terraform'],
+        \ })
+endif
