@@ -2,10 +2,15 @@
 	name         = {{ git_name }}
 	email        = {{ git_email }}
 	username     = {{ git_username }}
+	signingkey   = {{ git_sign_key }}
 [core]
 	editor 	     = vim
 	whitespace   = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	excludesfile = ~/.gitignore
+[commit]
+  gpgsign = true
+[tag]
+  gpgsign = true
 [web]
 	browser      = firefox
 [color]
@@ -35,3 +40,5 @@
   rebase			 = true
 [fetch]
 	prune				 = true
+[includeIf "gitdir:~/Work/"]
+	path = ~/Work/.gitconfig

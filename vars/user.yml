@@ -3,6 +3,7 @@ user: thomas
 git_username: Thomas 
 git_name: DamyrFr
 git_email: thomas@anvir.fr
+git_sign_key: "86F5A5B6C9B3BBD8"
 gui: true
 forward: true
 custom_hostname: brainfuck
