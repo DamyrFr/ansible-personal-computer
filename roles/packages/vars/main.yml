@@ -68,3 +68,4 @@ packages:
       - google-cloud-sdk
       - nodejs
       - vlc
+      - terraform-ls
