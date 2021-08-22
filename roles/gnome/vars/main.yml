@@ -6,6 +6,7 @@ packages:
       - network-manager-openvpn-gnome
       - gnome-tweaks
       - gnome-todo
+      - chromium # just in case :) 
       - gnome-boxes
       - vim-gtk # To have the clipboard feature enable
 to_remove:
