@@ -53,6 +53,7 @@ call plug#begin('~/.vim/plugged')
  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
  Plug 'ryanoasis/vim-devicons'
  Plug 'scrooloose/nerdtree'
+ Plug 'andymass/vim-matchup'
 call plug#end()
 
 let g:airline_powerline_fonts = 1
