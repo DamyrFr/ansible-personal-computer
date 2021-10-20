@@ -51,11 +51,3 @@
     key: "/org/gnome/desktop/interface/icon-theme"
     value: "'Paper'"
     state: present
-
-- name: "Set prefered apps"
-  become: "yes"
-  become_user: "{{ user }}"
-  dconf:
-    key: "/org/gnome/shell/favorite-apps"
-    value: "['firefox-esr.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop']"
-    state: present

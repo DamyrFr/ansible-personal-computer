@@ -101,3 +101,11 @@
     key: "/org/gnome/nautilus/preferences/default-folder-viewer"
     value: "'icon-view'"
     state: present
+
+- name: "Set favorite Apps"
+  become: "yes"
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/shell/favorite-apps"
+    value: "{{ fav_apps }}"
+    state: present
