@@ -32,7 +32,7 @@
   # The list of segments shown on the left. Fill it with the most important segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
-    os_icon                 # os identifier
+    #os_icon                 # os identifier
     dir                     # current directory
     vcs                     # git status
     # =========================[ Line #2 ]=========================
@@ -46,7 +46,7 @@
   # last prompt line gets hidden if it would overlap with left prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
-    status                  # exit code of the last command
+    #status                  # exit code of the last command
     command_execution_time  # duration of the last command
     background_jobs         # presence of background jobs
     direnv                  # direnv status (https://direnv.net/)
@@ -78,8 +78,8 @@
     kubecontext             # current kubernetes context (https://kubernetes.io/)
     terraform               # terraform workspace (https://www.terraform.io)
     aws                     # aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
-    aws_eb_env              # aws elastic beanstalk environment (https://aws.amazon.com/elasticbeanstalk/)
-    azure                   # azure account name (https://docs.microsoft.com/en-us/cli/azure)
+    #aws_eb_env              # aws elastic beanstalk environment (https://aws.amazon.com/elasticbeanstalk/)
+    #azure                   # azure account name (https://docs.microsoft.com/en-us/cli/azure)
     gcloud                  # google cloud cli account and project (https://cloud.google.com/)
     google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
     context                 # user@hostname
@@ -92,7 +92,7 @@
     #nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
     # vi_mode               # vi mode (you don't need this if you've enabled prompt_char)
     vpn_ip                  # virtual private network indicator
-    public_ip               # public IP address
+    #public_ip               # public IP address
     # load                  # CPU load
     # disk_usage            # disk usage
     # ram                   # free RAM
