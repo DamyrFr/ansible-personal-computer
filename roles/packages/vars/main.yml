@@ -69,3 +69,5 @@ packages:
       - nodejs
       - vlc
       - terraform-ls
+      - texlive-latex-extra
+      - latexmk
