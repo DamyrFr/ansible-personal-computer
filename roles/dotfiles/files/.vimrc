@@ -64,6 +64,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|^\.DS_Store\|^\.git\|^\.coffee'
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
+map <C-R> :FZF<CR>
 map <C-X> :NERDTreeToggle<CR>
 map <C-N> :tabnew<CR>
 map <C-Q> :tabclose<CR>
