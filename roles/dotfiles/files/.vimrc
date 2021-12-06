@@ -68,4 +68,4 @@ map <C-R> :FZF<CR>
 map <C-X> :NERDTreeToggle<CR>
 map <C-N> :tabnew<CR>
 map <C-Q> :tabclose<CR>
-map <C-T> :TagbarToggle<CR>
+map <C-T> :tabnext<CR>
