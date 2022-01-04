@@ -9,6 +9,7 @@ packages:
       - chromium # just in case :) 
       - gnome-boxes
       - vim-gtk # To have the clipboard feature enable
+      - gnome-pass-search-provider # https://github.com/jle64/gnome-pass-search-provider
 to_remove:
       - firefox-esr #I use classic FF not ESR
       - gnome-robots
