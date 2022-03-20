@@ -4,6 +4,8 @@
 
   vars_files:
     - vars/user.yml
+    - vars/packages.yml
+    - vars/system.yml
 
   roles:
     - system
@@ -13,4 +15,7 @@
     - security
     - include_role:
       name: gnome
+      when: gui == true
+    - include_role:
+      name: firefox
       when: gui == true

@@ -1,4 +1,5 @@
 ---
+# GCP repo
 - name: "Add Google gcloud (gcp) repository key"
   apt_key:
     url: "https://packages.cloud.google.com/apt/doc/apt-key.gpg" 
@@ -11,28 +12,10 @@
     state: present
   become: "yes"
 
-- name: "Add HashiCorp (gcp) repository key"
-  apt_key:
-    url: "https://apt.releases.hashicorp.com/gpg" 
-    state: present
-  become: "yes"
-
-- name: "Add HashiCorp (gcp) repository"
-  apt_repository:
-    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ debian_codename }} main"
-    state: present
-  become: "yes"
-
-- name: "Upgrade all packages to the latest version"
-  become: "yes"
-  apt:
-    name: "*"
-    state: latest
-    update_cache: yes
-
+# Spotify repo
 - name: "Add Spotify repository key"
   apt_key:
-    url: "https://download.spotify.com/debian/pubkey_0D811D58.gpg" 
+    url: "https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg" 
     state: present
   become: "yes"
 
@@ -42,6 +25,20 @@
     state: present
   become: "yes"
 
+# Hashicorp
+- name: "Add Hashicorp repository key"
+  apt_key:
+    url: "https://apt.releases.hashicorp.com/gpg" 
+    state: present
+  become: "yes"
+
+- name: "Add Hashicorp repository"
+  apt_repository:
+    repo: "deb https://apt.releases.hashicorp.com {{ stable_debian_codename }} main"
+    state: present
+  become: "yes"
+
+# NodeJS repo
 - name: "Add NodeJS repository key"
   apt_key:
     url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key" 
@@ -53,9 +50,16 @@
     repo: "{{ item }}"
     state: present
   with_items:
-    - "deb https://deb.nodesource.com/node_{{ node_version_major }}.x {{ debian_codename }} main"
-    - "deb-src https://deb.nodesource.com/node_{{ node_version_major }}.x {{ debian_codename }} main"
+    - "deb https://deb.nodesource.com/node_{{ node_version_major }}.x {{ stable_debian_codename }} main"
+    - "deb-src https://deb.nodesource.com/node_{{ node_version_major }}.x {{ stable_debian_codename }} main"
   become: "yes"
+
+- name: "Upgrade all packages to the latest version"
+  become: "yes"
+  apt:
+    name: "*"
+    state: latest
+    update_cache: yes
 
 - name: "Install tools and stuff"
   become: "yes"
@@ -63,85 +67,20 @@
     name: "{{ packages }}"
     state: latest
     autoclean: yes
-    update_cache: yes
-
-- name: "Install AWS CLI"
-  become: "yes"
-  pip: >
-   name=awscli
-   state=latest
-
-- name: "Install psutil"
-  become: "yes"
-  pip: >
-   name=psutil
-   state=latest
-
-- name: "Install git precommit"
-  become: "yes"
-  pip: >
-   name=pre-commit
-   state=latest
-
-- name: "Install detect secrets"
-  tags: "detect-secrets"
-  become: "yes"
-  pip: >
-   name=detect-secrets
-   state=latest
-
-- name: "Install tfenv"
-  git:
-    repo: "https://github.com/tfutils/tfenv.git"
-    dest: "/home/{{ user }}/.tfenv"
-  become: "yes"
-  become_user: "{{ user }}"
-
-- name: "Check if Vagrant is already installed"
-  package_facts:
-    manager: apt
-
-- name: "Download vagrant"
-  get_url: url={{ vagrant_url_deb }} dest={{ vagrant_tmp_deb }}
-  when: "'vagrant' in ansible_facts.packages"
-
-- name: "Install Vagrant"
-  become: "yes"
-  apt: deb={{ vagrant_tmp_deb }}
-  when: "'vagrant' in ansible_facts.packages"
-
-- name: "Remove .deb file"
-  file:
-    path: "{{ vagrant_tmp_deb }}"
-    state: absent
-  when: "'vagrant' in ansible_facts.packages"
-
-- name: "Install nokogiri (for Vagrant)"
-  become: "yes"
-  gem:
-    name: rake
-    state: latest
+    force: yes
 
 - name: "Install Scaleway cli"
+  become: "yes"
   get_url:
     url: "https://github.com/scaleway/scaleway-cli/releases/download/v{{ scw_version }}/scw-{{ scw_version }}-linux-x86_64"
     dest: "/usr/local/bin/scw"
     mode: '0755'
 
-- name: "Install Kubectx (Go version)"
-  get_url:
-    url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubectx_version }}/kubectx"
-    dest: "/usr/local/bin/kubectx"
-    mode: '0755'
+- name: Install Packer stack
+  include_tasks: vagrant.yml
 
-- name: "Install Pakcer"
-  get_url:
-    url: "https://releases.hashicorp.com/packer/{{ packer_version }}/packer_{{ packer_version }}_darwin_amd64.zip"
-    dest: "/usr/local/bin/packer"
-    mode: '0755'
+- name: Install pip packages
+  include_tasks: pip.yml
 
-- name: "Install Pakcer"
-  get_url:
-    url: "https://github.com/aquasecurity/tfsec/releases/download/v{{ tfsec_version }}/tfsec-darwin-amd64"
-    dest: "/usr/local/bin/tfsec"
-    mode: '0755'
+- name: Install asdf suff 
+  include_tasks: asdf.yml

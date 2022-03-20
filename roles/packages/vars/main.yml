@@ -71,3 +71,4 @@ packages:
       - terraform-ls
       - texlive-latex-extra
       - latexmk
+      - vagrant

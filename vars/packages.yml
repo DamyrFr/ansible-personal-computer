@@ -1,0 +1,18 @@
+---
+asdf_version: "v0.9.0"
+asdf_plugins:
+  - name: "tfenv"
+    version: "latest"
+  - name: "tfsec"
+    version: "latest"
+  - name: "kubectl"
+    version: "latest"
+  - name: "terraform-docs"
+    version: "latest"
+  - name: "terragrunt"
+    version: "latest"
+  - name: "helm"
+    version: "latest"
+  - name: "packer"
+    version: "latest"
+scw_version: "2.4.0"

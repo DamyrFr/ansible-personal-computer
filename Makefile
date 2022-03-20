@@ -1,7 +1,7 @@
 init:
 	apt update
 	apt -y upgrade
-	apt -y python3-pip
+	apt -y install python3-pip
 	pip3 install ansible
 	ansible-galaxy collection install ansible.posix
 
@@ -11,5 +11,8 @@ dry_run:
 debug:
 	ansible-playbook -vvv computer.yml
 
-deploy:
+full:
 	ansible-playbook computer.yml
+
+firefox-only:
+	ansible-playbook firefox-upgrade.yml

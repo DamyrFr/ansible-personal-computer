@@ -1,0 +1,43 @@
+---
+- name: "get users HOME"
+  getent:
+    database: passwd
+    key: "{{ user }}"
+    split: ":"
+
+- name: "ASDF set home var"
+  set_fact:
+    "asdf_user_home": "{{ getent_passwd[user][4] }}"
+
+- name: "install asdf"
+  git:
+    repo: "https://github.com/asdf-vm/asdf.git"
+    dest: "{{ asdf_user_home }}/.asdf"
+    version: "{{ asdf_version }}"
+  become: True
+  become_user: "{{ user }}"
+
+- name: "install asdf plugins"
+  command: "zsh -c 'asdf plugin-add {{ item.name }} {{ item.repository | default() }}'"
+  args:
+    creates: "{{ asdf_user_home }}/.asdf/plugins/{{ item.name }}"
+    chdir: "{{ asdf_user_home }}"
+  with_items: "{{ asdf_plugins }}"
+  when: asdf_plugins|length > 0
+  become: True
+  become_user: "{{ user }}"
+  ignore_errors: True
+
+- name: "install apps with asdf"
+  command: "bash -lc 'asdf install {{ item.0.name }} {{ item.1 }}'"
+  args:
+    creates: "{{ asdf_user_home }}/.asdf/installs/{{ item.0.name }}/{{ item.1 }}"
+    chdir: "{{ asdf_user_home }}"
+  with_subelements:
+    - "{{ asdf_plugins }}"
+    - versions
+    - flags:
+      skip_missing: True
+  when: asdf_plugins|length > 0
+  become: True
+  become_user: "{{ user }}"

@@ -14,7 +14,7 @@
   become: 'yes'
   copy:
     src: ../files/coc-settings.json
-    dest: "/home/.vim/coc-settings.json"
+    dest: "/home/{{ user }}/.vim/coc-settings.json"
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0644
