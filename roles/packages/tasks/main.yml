@@ -11,28 +11,9 @@
     state: present
   become: "yes"
 
-- name: "Add HashiCorp (gcp) repository key"
-  apt_key:
-    url: "https://apt.releases.hashicorp.com/gpg" 
-    state: present
-  become: "yes"
-
-- name: "Add HashiCorp (gcp) repository"
-  apt_repository:
-    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ debian_codename }} main"
-    state: present
-  become: "yes"
-
-- name: "Upgrade all packages to the latest version"
-  become: "yes"
-  apt:
-    name: "*"
-    state: latest
-    update_cache: yes
-
 - name: "Add Spotify repository key"
   apt_key:
-    url: "https://download.spotify.com/debian/pubkey_0D811D58.gpg" 
+    url: "https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg" 
     state: present
   become: "yes"
 
@@ -53,17 +34,24 @@
     repo: "{{ item }}"
     state: present
   with_items:
-    - "deb https://deb.nodesource.com/node_{{ node_version_major }}.x {{ debian_codename }} main"
-    - "deb-src https://deb.nodesource.com/node_{{ node_version_major }}.x {{ debian_codename }} main"
+    - "deb https://deb.nodesource.com/node_{{ node_version_major }}.x {{ nodejs_debian_codename }} main"
+    - "deb-src https://deb.nodesource.com/node_{{ node_version_major }}.x {{ nodejs_debian_codename }} main"
   become: "yes"
 
-- name: "Install tools and stuff"
+- name: "Upgrade all packages to the latest version"
   become: "yes"
   apt:
-    name: "{{ packages }}"
+    name: "*"
     state: latest
-    autoclean: yes
     update_cache: yes
+
+      #- name: "Install tools and stuff"
+      #  become: "yes"
+      #  apt:
+      #    name: "{{ packages }}"
+      #    state: latest
+      #    autoclean: yes
+      #    force: yes
 
 - name: "Install AWS CLI"
   become: "yes"
@@ -89,13 +77,6 @@
   pip: >
    name=detect-secrets
    state=latest
-
-- name: "Install tfenv"
-  git:
-    repo: "https://github.com/tfutils/tfenv.git"
-    dest: "/home/{{ user }}/.tfenv"
-  become: "yes"
-  become_user: "{{ user }}"
 
 - name: "Check if Vagrant is already installed"
   package_facts:
@@ -123,25 +104,25 @@
     state: latest
 
 - name: "Install Scaleway cli"
+  become: "yes"
   get_url:
     url: "https://github.com/scaleway/scaleway-cli/releases/download/v{{ scw_version }}/scw-{{ scw_version }}-linux-x86_64"
     dest: "/usr/local/bin/scw"
     mode: '0755'
 
 - name: "Install Kubectx (Go version)"
+  become: "yes"
   get_url:
     url: "https://github.com/ahmetb/kubectx/releases/download/v{{ kubectx_version }}/kubectx"
     dest: "/usr/local/bin/kubectx"
     mode: '0755'
 
-- name: "Install Pakcer"
+- name: "Download Pakcer"
+  become: "yes"
   get_url:
     url: "https://releases.hashicorp.com/packer/{{ packer_version }}/packer_{{ packer_version }}_darwin_amd64.zip"
     dest: "/usr/local/bin/packer"
     mode: '0755'
 
-- name: "Install Pakcer"
-  get_url:
-    url: "https://github.com/aquasecurity/tfsec/releases/download/v{{ tfsec_version }}/tfsec-darwin-amd64"
-    dest: "/usr/local/bin/tfsec"
-    mode: '0755'
+- name: Install asdf suff 
+  include_tasks: asdf.yml
