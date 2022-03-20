@@ -4,19 +4,3 @@ git_username: Thomas
 git_name: DamyrFr
 git_email: thomas@anvir.fr
 git_sign_key: "86F5A5B6C9B3BBD8"
-gui: true
-forward: true
-custom_hostname: brainfuck
-debian_codename: "bullseye"
-timezone: 'Europe/Paris'
-tmp_dir: "/tmp"
-vagrant_version: "2.2.10"
-kubectx_version: "0.9.4"
-packer_version: "1.7.4"
-scw_version: "2.3.1"
-tfsec_version: "0.58.4"
-architecture: "x86_64"
-dns_servers:
-  - "1.1.1.1"
-  - "208.67.220.220"
-  - "206.125.173.29"

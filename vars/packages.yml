@@ -1,0 +1,11 @@
+---
+asdf_version: "v0.9.0"
+asdf_plugins:
+  - name: "tfenv"
+    version: "latest"
+  - name: "tfsec"
+    version: "latest"
+vagrant_version: "2.2.10"
+kubectx_version: "0.9.4"
+packer_version: "1.7.4"
+scw_version: "2.4.0"

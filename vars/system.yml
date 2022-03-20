@@ -1,0 +1,12 @@
+---
+gui: true
+forward: true
+custom_hostname: brainfuck
+debian_codename: "bullseye"
+timezone: 'Europe/Paris'
+tmp_dir: "/tmp"
+architecture: "x86_64"
+dns_servers:
+  - "1.1.1.1"
+  - "208.67.220.220"
+  - "206.125.173.29"
