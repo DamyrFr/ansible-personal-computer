@@ -1,7 +1,4 @@
 ---
-- name: Install Firefox (not ESR)
-  include_tasks: firefox.yml
-
 - name: Parameter PC by using dconf
   include_tasks: dconf.yml
 
