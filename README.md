@@ -12,20 +12,29 @@ For versioning I follow this tag schema : {DEBIAN_MAJOR}.{MY_UPDATE}
 
 This is build to make new installation of my environment easier. All dosen't follow best practice for now.
 
-## Inputs (vars/user.yml) 
+## Inputs
+
+* User related `vars/user.yml`
 
 |   Variables      |   Types      | Description |
 | -------------    |:------------:| -----------:|
 |     user         |    string    | User name for my user |
+|    tmp_dir		   |    string    | Temporary directory |
+
+* System related `vars/system.yml`
+
+|   Variables      |   Types      | Description |
+| -------------    |:------------:| -----------:|
 |     gui          |    bool      | Used to set if you need to configure GNOME 3 environment |
 |   forward        |    bool      | Used to set if you need to allow the FORWARD iptables tables |
 |custom_hostname   |    string    | Custom hostname for the computer|
 |    timezone      |    string    | Current timezone for user |
-|    tmp_dir		   |    string    | Temporary directory |
-|{SOFTWARE}_version|    string    | Version of selected software to install |
 | architecture     |    string    | Your computer infrastrucutre |
 | dns_servers      | list(string) | List of DNS servers to set |
 |    alt_env       | list(string) | List of alternative user |
+
+* packages `vars/packages.yml`
+
 
 ## Roles
 
@@ -34,6 +43,7 @@ This is build to make new installation of my environment easier. All dosen't fol
 * Dotfiles : Deploy my dotfiles, .zshrc, .gitconfig, .tmux.conf
 * Security : Setup iptables rules make it permanent
 * gnome : if your set "gui" configure Gnome 3
+* firefox : install latest firefox version, you can deploy only this using `firefox-only`
 
 ## How configure your own user ?
 
