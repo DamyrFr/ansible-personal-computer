@@ -1,0 +1,25 @@
+---
+- name: "Install AWS CLI"
+  become: "yes"
+  pip: >
+   name=awscli
+   state=latest
+
+- name: "Install psutil"
+  become: "yes"
+  pip: >
+   name=psutil
+   state=latest
+
+- name: "Install git precommit"
+  become: "yes"
+  pip: >
+   name=pre-commit
+   state=latest
+
+- name: "Install detect secrets"
+  tags: "detect-secrets"
+  become: "yes"
+  pip: >
+   name=detect-secrets
+   state=latest

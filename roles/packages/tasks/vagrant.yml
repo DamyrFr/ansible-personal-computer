@@ -1,0 +1,6 @@
+---
+- name: "Install nokogiri (for Vagrant)"
+  become: "yes"
+  gem:
+    name: rake
+    state: latest
