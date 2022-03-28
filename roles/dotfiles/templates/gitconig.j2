@@ -40,5 +40,7 @@
   rebase			 = true
 [fetch]
 	prune				 = true
-[includeIf "gitdir:~/Work/"]
-	path = ~/Work/.gitconfig
+[push]
+	gpgSign = if-asked
+#[includeIf "gitdir:~/Work/"]
+#	path = ~/Work/.gitconfig

@@ -8,10 +8,11 @@ packages:
       - gnome-todo
       - chromium # just in case :) 
       - gnome-boxes
+      - wl-clipboard
+      - silversearcher-ag
       - vim-gtk # To have the clipboard feature enable
       - gnome-pass-search-provider # https://github.com/jle64/gnome-pass-search-provider
 to_remove:
-      - firefox-esr #I use classic FF not ESR
       - gnome-robots
       - gnome-music
       - gnome-mahjongg
@@ -20,6 +21,6 @@ to_remove:
       - gnome-nibbles
       - gnome-taquin
       - gnome-tetravex
-      - evolution 
+      - evolution
       - vim
 fav_apps: "['org.gnome.Terminal.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop']"
