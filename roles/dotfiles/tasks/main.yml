@@ -10,15 +10,6 @@
   with_items:
     ['.zshrc','.vimrc', '.tmux.conf']
 
-- name: "Add configuration files"
-  become: 'yes'
-  copy:
-    src: ../files/coc-settings.json
-    dest: "/home/{{ user }}/.vim/coc-settings.json"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: 0644
-
 - name: "Configure Gitfile"
   template: src=gitconig.j2 dest="/home/{{ user }}/.gitconfig"
   become: true
@@ -63,6 +54,15 @@
   copy:
     src: ../files/init.lua
     dest: "/home/{{ user }}/.config/nvim/"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+
+- name: "Add configuration for Starship prompt"
+  become: 'yes'
+  copy:
+    src: ../files/starship.tom
+    dest: "/home/{{ user }}/.config/"
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0644
