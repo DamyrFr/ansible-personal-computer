@@ -11,7 +11,7 @@
     ['.zshrc','.vimrc', '.tmux.conf']
 
 - name: "Configure Gitfile"
-  template: src=gitconig.j2 dest="/home/{{ user }}/.gitconfig"
+  template: src=gitconfig.j2 dest="/home/{{ user }}/.gitconfig"
   become: true
   become_user: "{{ user }}"
 
