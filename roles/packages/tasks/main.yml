@@ -76,6 +76,14 @@
     dest: "/usr/local/bin/scw"
     mode: '0755'
 
+- name: "Install Starship"
+  become: "yes"
+  unarchive:
+    remote_src: yes
+    src: "https://github.com/starship/starship/releases/download/v{{ starship_version }}/starship-x86_64-unknown-linux-gnu.tar.gz"
+    dest: "/usr/local/bin/starship"
+    mode: '0755'
+
 - name: Install Packer stack
   include_tasks: vagrant.yml
 

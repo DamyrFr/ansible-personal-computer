@@ -3,8 +3,10 @@
 	email        = {{ git_email }}
 	username     = {{ git_username }}
 	signingkey   = {{ git_sign_key }}
+[protocol]
+	version			= 2
 [core]
-	editor 	     = vim
+	editor 	     = nvim
 	whitespace   = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	excludesfile = ~/.gitignore
 [commit]
@@ -36,11 +38,15 @@
 	editor 	     = interactive-rebase-tool
 [alias]
 	lg 	     		 = log  --all --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	am					 = commit --amend --no-edit
 [pull]
   rebase			 = true
 [fetch]
 	prune				 = true
 [push]
 	gpgSign = if-asked
+[gitreview]
+	remote = origin
+# If overload configuration is needed on some repository
 #[includeIf "gitdir:~/Work/"]
 #	path = ~/Work/.gitconfig
