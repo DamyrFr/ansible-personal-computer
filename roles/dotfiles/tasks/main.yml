@@ -8,7 +8,7 @@
     group: "{{ user }}"
     mode: 0644
   with_items:
-    ['.zshrc','.vimrc', '.tmux.conf', '.p10k.zsh']
+    ['.zshrc','.vimrc', '.tmux.conf']
 
 - name: "Add configuration files"
   become: 'yes'
@@ -47,3 +47,22 @@
 
 - name: "Install vim coc plugin"
   shell: "vim +'CocInstall coc-pyright coc-json coc-yaml' +qall &> /dev/null < /dev/tty"
+
+# Neovim
+- name: "Init Neovim repo"
+  become: 'yes'
+  file:
+    path: "/home/{{ user }}/.config/nvim/"
+    state: directory
+    mode: '0755'
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: "Add configuration file for Neovim"
+  become: 'yes'
+  copy:
+    src: ../files/init.lua
+    dest: "/home/{{ user }}/.config/nvim/"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
