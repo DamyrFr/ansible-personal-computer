@@ -1,0 +1,33 @@
+- name: Ensure fonts directory
+  file:
+    path: "/home/{{ user }}/.fonts"
+    state: directory
+  become: "yes"
+
+- name: Check if Nerd font is present
+  shell: "ls /home/{{ user }}/.local/share/fonts/Hack*Nerd*Font*Complete*"
+  register: hack_exists
+  ignore_errors: yes
+  become: "yes"
+
+- name: Download Nerd font
+  when: hack_exists is failed
+  unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
+    dest: "/home/{{ user }}/.local/share/fonts/"
+    remote_src: yes
+  become: "yes"
+
+- name: Check if jetbrains font is present
+  shell: "ls /home/{{ user }}/.local/share/fonts/*JetBrainsMono*"
+  register: jetbrains_exists
+  ignore_errors: yes
+  become: "yes"
+
+- name: Download jetbrains font
+  when: jetbrains is failed
+  unarchive:
+    src: https://download.jetbrains.com/fonts/JetBrainsMono-2.242.zip
+    dest: "/home/{{ user }}/.local/share/fonts/"
+    remote_src: yes
+  become: "yes"
