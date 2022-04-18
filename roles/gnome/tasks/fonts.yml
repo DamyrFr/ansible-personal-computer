@@ -25,7 +25,7 @@
   become: "yes"
 
 - name: Download jetbrains font
-  when: jetbrains is failed
+  when: jetbrains_exists is failed
   unarchive:
     src: https://download.jetbrains.com/fonts/JetBrainsMono-2.242.zip
     dest: "/home/{{ user }}/.local/share/fonts/"

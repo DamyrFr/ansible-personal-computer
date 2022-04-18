@@ -61,7 +61,7 @@
 - name: "Add configuration for Starship prompt"
   become: 'yes'
   copy:
-    src: ../files/starship.tom
+    src: ../files/starship.toml
     dest: "/home/{{ user }}/.config/"
     owner: "{{ user }}"
     group: "{{ user }}"
