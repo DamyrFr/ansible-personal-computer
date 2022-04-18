@@ -63,6 +63,8 @@ require('packer').startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp'
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
+	use 'williamboman/nvim-lsp-installer' -- Directly install form nvim
+	use 'hashivim/vim-terraform' -- Terraform color
 end)
 ---------------------------------------------------------------------> Global config
 local opt = vim.opt
@@ -215,11 +217,35 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.ansiblels.setup{}
-require'lspconfig'.terraformls.setup{}
-require'lspconfig'.bashls.setup{}
-require'lspconfig'.dockerls.setup{}
+local servers = { 'ansiblels', 'dockerls', 'bashls', 'pyright' }
+for _, lsp in pairs(servers) do
+  require('lspconfig')[lsp].setup {
+    on_attach = on_attach,
+		capabilities = capabilities,
+    flags = {
+      -- This will be the default in neovim 0.7+
+      debounce_text_changes = 150,
+    }
+  }
+end
+
+require'lspconfig'.terraformls.setup{
+	capabilities = capabilities,
+	filetypes = { "tf", "tfvar", "terraform" }
+}
+
+-- lsp installer
+local lsp_installer = require("nvim-lsp-installer")
+
+lsp_installer.settings({
+    ui = {
+        icons = {
+            server_installed = "✓",
+            server_pending = "➜",
+            server_uninstalled = "✗"
+        }
+    }
+})
 
 -- luasnip setup
 local luasnip = require 'luasnip'
