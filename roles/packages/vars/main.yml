@@ -74,3 +74,6 @@ packages:
       - texlive-latex-extra
       - latexmk
       - vagrant
+      - podman
+      - buildah
+      - npm
