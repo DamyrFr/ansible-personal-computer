@@ -72,16 +72,16 @@
 - name: "Install Scaleway cli"
   become: "yes"
   get_url:
-    url: "https://github.com/scaleway/scaleway-cli/releases/download/v{{ scw_version }}/scw-{{ scw_version }}-linux-x86_64"
+    url: "https://github.com/scaleway/scaleway-cli/releases/download/v{{ scw_version }}/scaleway-cli_{{ scw_version }}_linux_amd64"
     dest: "/usr/local/bin/scw"
     mode: '0755'
 
-- name: "Install Starship"
+- name: "Install Starship cli"
   become: "yes"
   unarchive:
     remote_src: yes
     src: "https://github.com/starship/starship/releases/download/v{{ starship_version }}/starship-x86_64-unknown-linux-gnu.tar.gz"
-    dest: "/usr/local/bin/starship"
+    dest: "/usr/local/bin/"
     mode: '0755'
 
 - name: Install Packer stack
