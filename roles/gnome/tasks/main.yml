@@ -2,6 +2,9 @@
 - name: Parameter PC by using dconf
   include_tasks: dconf.yml
 
+- name: Install fonts
+  include_tasks: fonts.yml
+
 - name: "Install tools and stuff"
   become: "yes"
   apt:

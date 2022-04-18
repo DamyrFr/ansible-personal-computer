@@ -8,19 +8,10 @@
     group: "{{ user }}"
     mode: 0644
   with_items:
-    ['.zshrc','.vimrc', '.tmux.conf', '.p10k.zsh']
-
-- name: "Add configuration files"
-  become: 'yes'
-  copy:
-    src: ../files/coc-settings.json
-    dest: "/home/{{ user }}/.vim/coc-settings.json"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: 0644
+    ['.zshrc','.vimrc', '.tmux.conf']
 
 - name: "Configure Gitfile"
-  template: src=gitconig.j2 dest="/home/{{ user }}/.gitconfig"
+  template: src=gitconfig.j2 dest="/home/{{ user }}/.gitconfig"
   become: true
   become_user: "{{ user }}"
 
@@ -47,3 +38,31 @@
 
 - name: "Install vim coc plugin"
   shell: "vim +'CocInstall coc-pyright coc-json coc-yaml' +qall &> /dev/null < /dev/tty"
+
+# Neovim
+- name: "Init Neovim repo"
+  become: 'yes'
+  file:
+    path: "/home/{{ user }}/.config/nvim/"
+    state: directory
+    mode: '0755'
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: "Add configuration file for Neovim"
+  become: 'yes'
+  copy:
+    src: ../files/init.lua
+    dest: "/home/{{ user }}/.config/nvim/"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+
+- name: "Add configuration for Starship prompt"
+  become: 'yes'
+  copy:
+    src: ../files/starship.toml
+    dest: "/home/{{ user }}/.config/"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
