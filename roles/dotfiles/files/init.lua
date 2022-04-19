@@ -229,6 +229,18 @@ for _, lsp in pairs(servers) do
   }
 end
 
+require('lspconfig').yamlls.setup {
+  on_attach = on_attach,
+	capabilities = capabilities,
+  settings = {
+    yaml = {
+      schemas = {
+        ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.k8s.yaml",
+      },
+    },
+  }
+}
+
 require'lspconfig'.terraformls.setup{
 	capabilities = capabilities,
 	filetypes = { "tf", "tfvar", "terraform" }
