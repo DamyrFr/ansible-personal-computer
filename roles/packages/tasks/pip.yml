@@ -4,18 +4,21 @@
   pip: >
    name=awscli
    state=latest
+  tags: upgrade
 
 - name: "Install psutil"
   become: "yes"
   pip: >
    name=psutil
    state=latest
+  tags: upgrade
 
 - name: "Install git precommit"
   become: "yes"
   pip: >
    name=pre-commit
    state=latest
+  tags: upgrade
 
 - name: "Install detect secrets"
   tags: "detect-secrets"
@@ -23,3 +26,4 @@
   pip: >
    name=detect-secrets
    state=latest
+  tags: upgrade

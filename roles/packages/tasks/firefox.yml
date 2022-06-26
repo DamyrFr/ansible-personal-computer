@@ -5,12 +5,14 @@
     url: "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=fr"
     dest: "{{ tmp_dir }}/Firefox.tar.bz2"
     mode: '0440'
+  tags: firefox
 
 - name: "Extract Firefox install"
   become: "yes"
   unarchive:
     src: "{{ tmp_dir }}/Firefox.tar.bz2"
     dest: "/opt/"
+  tags: firefox
 
 - name: "Create symlink for exec Firefox"
   become: "yes"
@@ -18,6 +20,7 @@
     src: "/opt/firefox/firefox"
     dest: "/usr/local/bin/firefox"
     state: link
+  tags: firefox
     
 - name: "Copy Application file"
   become: "yes"
@@ -26,8 +29,10 @@
     dest: "/usr/share/applications/firefox.desktop"
     owner: "{{ user }}"
     group: "{{ user }}"
+  tags: firefox
 
 - name: "Remove archive"
   file:
     path: "{{ tmp_dir }}/Firefox.tar.bz2"
     state: absent
+  tags: firefox

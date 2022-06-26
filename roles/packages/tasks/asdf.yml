@@ -16,6 +16,7 @@
     version: "{{ asdf_version }}"
   become: True
   become_user: "{{ user }}"
+  tags: upgrade
 
 - name: "install asdf plugins"
   command: "zsh -c 'asdf plugin-add {{ item.name }} {{ item.repository | default() }}'"
@@ -27,6 +28,7 @@
   become: True
   become_user: "{{ user }}"
   ignore_errors: True
+  tags: upgrade
 
 - name: "install apps with asdf"
   command: "bash -lc 'asdf install {{ item.0.name }} {{ item.1 }}'"
@@ -41,3 +43,4 @@
   when: asdf_plugins|length > 0
   become: True
   become_user: "{{ user }}"
+  tags: upgrade

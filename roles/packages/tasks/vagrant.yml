@@ -4,3 +4,4 @@
   gem:
     name: rake
     state: latest
+  tags: upgrade

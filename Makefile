@@ -9,10 +9,13 @@ dry_run:
 	ansible-playbook computer.yml --check
 
 debug:
-	ansible-playbook -vvv computer.yml
+	ansible-playbook -vvv computer.yml --tags all
 
 full:
-	ansible-playbook computer.yml
+	ansible-playbook computer.yml --tags all
 
 firefox-only:
-	ansible-playbook firefox-upgrade.yml
+	ansible-playbook computer.yml --tags firefox
+
+upgrade-only:
+	ansible-playbook computer.yml --tags "firefox,upgrade"

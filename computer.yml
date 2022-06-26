@@ -16,6 +16,3 @@
     - include_role:
       name: gnome
       when: gui == true
-    - include_role:
-      name: firefox
-      when: latestff == true
