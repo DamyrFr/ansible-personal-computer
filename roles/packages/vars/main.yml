@@ -76,4 +76,6 @@ packages:
       - vagrant
       - podman
       - buildah
+      - virtualenv
+      - taskwarrior
       - npm
