@@ -5,8 +5,8 @@ init:
 	pip3 install -r requirements.txt
 	ansible-galaxy install -r requirements.yml
 
-dry_run:
-	ansible-playbook computer.yml --check
+dry-run-full:
+	ansible-playbook computer.yml --check --tags all
 
 debug:
 	ansible-playbook -vvv computer.yml --tags all
