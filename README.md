@@ -35,6 +35,11 @@ This is build to make new installation of my environment easier. All dosen't fol
 
 * packages `vars/packages.yml`
 
+## Tags
+
+* `firefox` : Insall / upgrade Firefox (latest release)
+* `upgrade` : Install / upgrade packages, software
+* `dotfiles` : Sync dotfiles
 
 ## Roles
 

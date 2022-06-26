@@ -9,11 +9,13 @@
     mode: 0644
   with_items:
     ['.zshrc','.vimrc', '.tmux.conf']
+  tags: dotfiles
 
 - name: "Configure Gitfile"
   template: src=gitconfig.j2 dest="/home/{{ user }}/.gitconfig"
   become: true
   become_user: "{{ user }}"
+  tags: dotfiles
 
 - name: "Vim plug"
   become: 'yes'
@@ -23,6 +25,7 @@
     mode: '0755'
     owner: "{{ user }}"
     group: "{{ user }}"
+  tags: dotfiles
 
 - name: "Download vim module Plug"
   become: 'yes'
@@ -48,6 +51,7 @@
     mode: '0755'
     owner: "{{ user }}"
     group: "{{ user }}"
+  tags: dotfiles
 
 - name: "Add configuration file for Neovim"
   become: 'yes'
@@ -57,6 +61,7 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0644
+  tags: dotfiles
 
 - name: "Add configuration for Starship prompt"
   become: 'yes'
@@ -66,3 +71,4 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0644
+  tags: dotfiles

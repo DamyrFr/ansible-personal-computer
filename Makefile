@@ -14,8 +14,11 @@ debug:
 full:
 	ansible-playbook computer.yml --tags all
 
-firefox-only:
+firefox:
 	ansible-playbook computer.yml --tags firefox
 
-upgrade-only:
+upgrade:
 	ansible-playbook computer.yml --tags "firefox,upgrade"
+
+dotfiles:
+	ansible-playbook computer.yml --tags dotfiles
