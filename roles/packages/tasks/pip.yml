@@ -21,7 +21,6 @@
   tags: upgrade
 
 - name: "Install detect secrets"
-  tags: "detect-secrets"
   become: "yes"
   pip: >
    name=detect-secrets

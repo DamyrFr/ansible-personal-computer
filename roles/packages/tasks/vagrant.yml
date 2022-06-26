@@ -3,5 +3,6 @@
   become: "yes"
   gem:
     name: rake
+    norc: true
     state: latest
   tags: upgrade

@@ -1,6 +1,4 @@
 ---
-vagrant_url_deb: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_{{ architecture }}.deb"
-vagrant_tmp_deb: "{{ tmp_dir }}/vagrant_{{vagrant_version}}.deb"
 node_version_major: "12"
 node_version: "{{ node_version_major }}.20.2-1nodesource1"
 packages:
@@ -73,9 +71,9 @@ packages:
       - terraform-ls
       - texlive-latex-extra
       - latexmk
-      - vagrant
       - podman
       - buildah
       - virtualenv
       - taskwarrior
       - npm
+      - vagrant
