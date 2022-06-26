@@ -2,8 +2,8 @@ init:
 	apt update
 	apt -y upgrade
 	apt -y install python3-pip
-	pip3 install ansible
-	ansible-galaxy collection install ansible.posix
+	pip3 install -r requirements.txt
+	ansible-galaxy install -r requirements.yml
 
 dry_run:
 	ansible-playbook computer.yml --check
