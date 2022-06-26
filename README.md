@@ -2,13 +2,9 @@
 
 All my configuration files and Debian config by code !
 
-Ansible version > `ansible 2.9.X`
-
 Build for deploy my environment on laptop, PC and GNU/Linux bastion.
 
 Warning : This code is build for Debian.
-
-For versioning I follow this tag schema : {DEBIAN_MAJOR}.{MY_UPDATE}
 
 This is build to make new installation of my environment easier. All dosen't follow best practice for now.
 
