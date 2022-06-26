@@ -44,7 +44,6 @@ This is build to make new installation of my environment easier. All dosen't fol
 * Dotfiles : Deploy my dotfiles, .zshrc, .gitconfig, .tmux.conf
 * Security : Setup iptables rules make it permanent
 * gnome : if your set "gui" configure Gnome 3
-* firefox : install latest firefox version, you can deploy only this using `firefox-only`
 
 ## How configure your own user ?
 
