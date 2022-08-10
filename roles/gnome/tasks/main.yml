@@ -6,20 +6,20 @@
   include_tasks: fonts.yml
 
 - name: "Install tools and stuff"
-  become: "yes"
+  become: true
   apt:
     name: "{{ packages }}"
     state: latest
     autoclean: yes
 
 - name: "Remove tools (not needed, games etc.)"
-  become: "yes"
+  become: true
   apt:
     name: "{{ to_remove }}"
     state: absent
 
 - name: "Copy wallpaper file"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   copy:
     src: "files/wallpaper.jpg" 
@@ -34,18 +34,18 @@
     dest: "{{ tmp_dir }}/paper_icon.deb"
 
 - name: "Install icons (Paper)"
-  become: "yes"
+  become: true
   apt:
     deb: "{{ tmp_dir }}/paper_icon.deb"
 
 - name: "Remove package archive"
-  become: "yes"
+  become: true
   file:
     path: "{{ tmp_dir }}/paper_icon.deb"
     state: absent
 
 - name: "Gnome set icons"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/interface/icon-theme"

@@ -1,6 +1,6 @@
 ---
 - name: "Install nokogiri (for Vagrant)"
-  become: "yes"
+  become: true
   gem:
     name: rake
     norc: true

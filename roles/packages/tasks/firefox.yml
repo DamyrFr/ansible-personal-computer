@@ -8,14 +8,14 @@
   tags: firefox
 
 - name: "Extract Firefox install"
-  become: "yes"
+  become: true
   unarchive:
     src: "{{ tmp_dir }}/Firefox.tar.bz2"
     dest: "/opt/"
   tags: firefox
 
 - name: "Create symlink for exec Firefox"
-  become: "yes"
+  become: true
   file:
     src: "/opt/firefox/firefox"
     dest: "/usr/local/bin/firefox"
@@ -23,7 +23,7 @@
   tags: firefox
     
 - name: "Copy Application file"
-  become: "yes"
+  become: true
   copy:
     src: "files/firefox.desktop" 
     dest: "/usr/share/applications/firefox.desktop"
