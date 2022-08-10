@@ -79,7 +79,7 @@ if ! zplug check --verbose; then
 fi
 zplug load
 #===================={ export }====================
-export EDITOR="vim"
+export EDITOR="nvim"
 export PAGER="most" #Needed for man color
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
