@@ -1,7 +1,10 @@
 - name: Ensure fonts directory
   file:
-    path: "/home/{{ user }}/.fonts"
+    path: "{{ item }}"
     state: directory
+  with_items:
+    - "/home/{{ user }}/.fonts"
+    - "/home/{{ user }}/.local/share/fonts"
   become: "yes"
 
 - name: Check if Nerd font is present
