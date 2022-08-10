@@ -60,8 +60,10 @@ require('packer').startup(function(use)
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
   use 'saadparwaiz1/cmp_luasnip'
+	use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
+	use 'onsails/lspkind-nvim' -- vscode-like pictograms
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
 	use 'williamboman/nvim-lsp-installer' -- Directly install form nvim
 	use 'hashivim/vim-terraform' -- Terraform color
@@ -85,6 +87,9 @@ opt.syntax = "on"
 opt.smartcase = true
 opt.ignorecase = true
 opt.list = true
+opt.encoding = 'utf-8'
+opt.fileencoding = 'utf-8'
+
 -- old
 vim.opt.clipboard:prepend {"unnamedplus"}
 --Set colorscheme
