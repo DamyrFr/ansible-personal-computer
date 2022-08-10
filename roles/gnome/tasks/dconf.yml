@@ -1,13 +1,13 @@
 ---
 - name: "Set GNOME Wallpaper"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/background/picture-uri"
     value: "'file:///home/{{ user }}/.wallpaper.jpg'"
 
 - name: "Gnome show date"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/interface/clock-show-date"
@@ -15,7 +15,7 @@
     state: present
 
 - name: "Gnome date use 24h format"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/interface/clock-format"
@@ -23,7 +23,7 @@
     state: present
 
 - name: "Gnome show seconds"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/interface/clock-show-seconds"
@@ -31,7 +31,7 @@
     state: present
 
 - name: "Gnome show battery percentage"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/interface/show-battery-percentage"
@@ -39,7 +39,7 @@
     state: present
 
 - name: "Gnome set plugins"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/shell/enabled-extensions"
@@ -47,7 +47,7 @@
     state: present
 
 - name: "Gnome set favApp"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/shell/favorite-apps"
@@ -55,7 +55,7 @@
     state: present
 
 - name: "Gnome set theme"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/shell/extensions/user-theme/name"
@@ -63,7 +63,7 @@
     state: present
 
 - name: "Gnome set user theme"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/shell/extensions/user-theme/name"
@@ -71,7 +71,7 @@
     state: present
 
 - name: "Gnome set GTK theme"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/interface/gtk-theme"
@@ -79,7 +79,7 @@
     state: present
 
 - name: "Gnome set WM theme"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/wm/preferences/theme"
@@ -87,7 +87,7 @@
     state: present
 
 - name: "Nautilus set default filter"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/nautilus/preferences/search-filter-time-type"
@@ -95,7 +95,7 @@
     state: present
 
 - name: "Nautilus set default view"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/nautilus/preferences/default-folder-viewer"
@@ -103,7 +103,7 @@
     state: present
 
 - name: "Set favorite Apps"
-  become: "yes"
+  become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/shell/favorite-apps"

@@ -1,6 +1,6 @@
 ---
 - name: "Install pip package"
-  become: "yes"
+  become: true
   pip: >
    name="{{ item.name }}"
    state="{{ item.version }}"
