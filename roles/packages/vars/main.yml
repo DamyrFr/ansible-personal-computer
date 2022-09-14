@@ -76,4 +76,5 @@ packages:
       - virtualenv
       - taskwarrior
       - npm
+      - golang
       - vagrant
