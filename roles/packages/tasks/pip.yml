@@ -9,4 +9,5 @@
     - { name: 'psutil', version: 'latest' }
     - { name: 'pre-commit', version: 'latest' }
     - { name: 'detect-secrets', version: 'latest' }
+    - { name: 'python-openstackclient', version: 'latest' }
   tags: upgrade
