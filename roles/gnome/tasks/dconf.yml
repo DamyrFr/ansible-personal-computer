@@ -43,7 +43,7 @@
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/shell/enabled-extensions"
-    value: "['horizontal-workspaces@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com']"
+    value: "['horizontal-workspaces@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'Vitals@CoreCoding.com']"
     state: present
 
 - name: "Gnome set favApp"
@@ -54,20 +54,12 @@
     value: "['org.gnome.Terminal.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop']"
     state: present
 
-- name: "Gnome set theme"
-  become: true
-  become_user: "{{ user }}"
-  dconf:
-    key: "/org/gnome/shell/extensions/user-theme/name"
-    value: "'Arc-Dark'"
-    state: present
-
 - name: "Gnome set user theme"
   become: true
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/shell/extensions/user-theme/name"
-    value: "'Arc-Dark'"
+    value: "''"
     state: present
 
 - name: "Gnome set GTK theme"
@@ -75,7 +67,7 @@
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/interface/gtk-theme"
-    value: "'Arc-Darker'"
+    value: "'Adwaita-dark'"
     state: present
 
 - name: "Gnome set WM theme"
@@ -83,7 +75,23 @@
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/wm/preferences/theme"
-    value: "'Arc-Darker'"
+    value: "'Adwaita-dark'"
+    state: present
+
+- name: "Gnome set dark"
+  become: true
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/desktop/wm/interface/color-scheme"
+    value: "'prefer-dark'"
+    state: present
+
+- name: "Gnome disable F10 menu on term"
+  become: true
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/terminal/legacy/menu-accelerator-enabled"
+    value: "true"
     state: present
 
 - name: "Nautilus set default filter"
