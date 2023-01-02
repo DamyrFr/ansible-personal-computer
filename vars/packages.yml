@@ -16,5 +16,5 @@ asdf_plugins:
   - name: "packer"
     version: "latest"
 # Version are tag on Github without the v
-scw_version: "2.6.0"
+scw_version: "2.7.0"
 starship_version: "1.6.2"
