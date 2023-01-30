@@ -1,7 +1,7 @@
 ---
 gui: true
 forward: true
-custom_hostname: brainfuck
+custom_hostname: laptop-waays
 stable_debian_codename: "bullseye"
 timezone: 'Europe/Paris'
 tmp_dir: "/tmp"

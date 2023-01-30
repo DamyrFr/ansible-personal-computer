@@ -33,6 +33,13 @@
 -A OUTPUT -p udp -m udp --dport 4569 -m comment --comment VPN -j ACCEPT
 -A OUTPUT -p udp -m udp --dport 5060 -m comment --comment VPN -j ACCEPT
 -A OUTPUT -p udp -m udp --dport 1194 -m comment --comment VPN -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 1927 -m comment --comment WAAYS -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 1969 -m comment --comment WAAYS -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 6666 -m comment --comment WAAYS -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 1313 -m comment --comment WAAYS -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 21132 -m comment --comment WAAYS -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 1969 -m comment --comment WAAYS -j ACCEPT
+-A OUTPUT -p tcp -m tcp --dport 1927 -m comment --comment WAAYS -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 5222 -m comment --comment JABBER -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 8001 -m comment --comment IRC -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 8010 -m comment --comment "JABBER FT" -j ACCEPT
