@@ -1,2 +1,14 @@
 add_newline = false
 
+[aws]
+format = 'on [$symbol($profile )(\($region\) )]($style)'
+
+[cmd_duration]
+min_time = 1_000
+
+[directory]
+truncation_length = 3
+truncation_symbol = '…/'
+
+[package]
+disabled = true
