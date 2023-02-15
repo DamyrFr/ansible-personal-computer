@@ -72,3 +72,23 @@
     group: "{{ user }}"
     mode: 0644
   tags: dotfiles
+
+- name: "Init Zellij repo"
+  become: true
+  file:
+    path: "/home/{{ user }}/.config/nvim/"
+    state: directory
+    mode: '0755'
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  tags: dotfiles
+
+- name: "Add configuration file for Zellij"
+  become: true
+  copy:
+    src: ../files/config.kdl
+    dest: "/home/{{ user }}/.config/zellij/"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+  tags: dotfiles
