@@ -4,10 +4,12 @@
     database: passwd
     key: "{{ user }}"
     split: ":"
+  tags: upgrade
 
 - name: "ASDF set home var"
   set_fact:
     "asdf_user_home": "{{ getent_passwd[user][4] }}"
+  tags: upgrade
 
 - name: "install asdf"
   git:
