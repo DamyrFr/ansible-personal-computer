@@ -76,6 +76,5 @@ packages:
       - npm
       - golang
       - vagrant
-      - pylsp
       - pre-commit
       - python3-openstackclient
