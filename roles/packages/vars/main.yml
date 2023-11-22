@@ -3,7 +3,6 @@ node_version_major: "12"
 node_version: "{{ node_version_major }}.20.2-1nodesource1"
 packages:
       - vim
-      - neovim
       - ripgrep
       - ipcalc
       - tcpdump
@@ -78,3 +77,5 @@ packages:
       - golang
       - vagrant
       - pylsp
+      - pre-commit
+      - python3-openstackclient
