@@ -15,7 +15,7 @@ firefox:
 	ansible-playbook computer.yml --tags firefox
 
 upgrade:
-	ansible-playbook computer.yml --tags "firefox,upgrade"
+	ansible-playbook computer.yml --tags "firefox,upgrade,neovim"
 
 dotfiles:
 	ansible-playbook computer.yml --tags dotfiles
