@@ -100,10 +100,6 @@
   include_tasks: vagrant.yml
   tags: upgrade
 
-- name: Install pip packages
-  include_tasks: pip.yml
-  tags: upgrade
-
 - name: Install asdf suff 
   include_tasks: asdf.yml
   tags: upgrade
