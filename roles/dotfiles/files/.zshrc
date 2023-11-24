@@ -89,6 +89,7 @@ export GREP_COLOR=31
 export PASSWORD_STORE_GENERATED_LENGTH=32
 export AWS_VAULT_BACKEND=pass
 export AWS_SDK_LOAD_CONFIG=true
+export GOPATH="/home/thomas/go"
 export PATH="$(yarn global bin):$HOME/.tfenv/bin:$HOME/.asdf/bin/:$HOME/.local/bin:$PATH"
 # Color on man
 export LESS_TERMCAP_mb=$'\e[1;32m'
