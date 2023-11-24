@@ -79,3 +79,5 @@ packages:
       - vagrant
       - pre-commit
       - python3-openstackclient
+      - testssl.sh
+      - gopls
