@@ -19,6 +19,6 @@
 
 - name: "Remove archive"
   file:
-    path: "{{ tmp_dir }}/Firefox.tar.bz2"
+    src: "{{ tmp_dir }}/nvim-linux64.tar.gz"
     state: absent
   tags: neovim
