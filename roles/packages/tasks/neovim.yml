@@ -13,9 +13,10 @@
 
 - name: "Clone neovim configuration"
   ansible.builtin.git:
-    repo: "https://github.com/DamyrFr/neovim-config" #v0.9.4
+    repo: "git@github.com:DamyrFr/neovim-config" #v0.9.4
     dest: "/home/{{ user }}/.config/nvim/"
     force: yes
+    accept_hostkey: true
     update: yes
   tags: neovim
 
