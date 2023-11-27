@@ -111,7 +111,3 @@
 - name: Install NeoVim
   include_tasks: neovim.yml
   tags: neovim
-
-- name: Install LSP
-  include_tasks: lsp.yml
-  tags: upgrade
