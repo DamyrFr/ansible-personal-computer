@@ -108,6 +108,6 @@
   include_tasks: firefox.yml
   tags: firefox
 
-- name: Install LSP
-  include_tasks: lsp.yml
-  tags: upgrade
+- name: Install NeoVim
+  include_tasks: neovim.yml
+  tags: neovim

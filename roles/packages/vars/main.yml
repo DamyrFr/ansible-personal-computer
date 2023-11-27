@@ -1,6 +1,7 @@
 ---
 node_version_major: "12"
 node_version: "{{ node_version_major }}.20.2-1nodesource1"
+neovim_version: "v0.9.4"
 packages:
       - vim
       - ripgrep
@@ -78,3 +79,5 @@ packages:
       - vagrant
       - pre-commit
       - python3-openstackclient
+      - testssl.sh
+      - gopls

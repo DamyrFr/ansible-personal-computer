@@ -1,0 +1,26 @@
+- name: "Clone neovim release from repo"
+  ansible.builtin.get_url:
+    url: "https://github.com/neovim/neovim/releases/download/{{ neovim_version }}/nvim-linux64.tar.gz" #v0.9.4
+    dest: "{{ tmp_dir }}"
+  tags: neovim
+
+- name: "Extract Neovim install files"
+  become: true
+  unarchive:
+    src: "{{ tmp_dir }}/nvim-linux64.tar.gz"
+    dest: "/usr/"
+  tags: neovim
+
+- name: "Clone neovim configuration"
+  ansible.builtin.git:
+    repo: "https://github.com/DamyrFr/neovim-config" #v0.9.4
+    dest: "/home/{{ user }}/.config/nvim/"
+    force: yes
+    update: yes
+  tags: neovim
+
+- name: "Remove Neovim archive"
+  file:
+    path: "{{ tmp_dir }}/nvim-linux64.tar.gz"
+    state: absent
+  tags: neovim
