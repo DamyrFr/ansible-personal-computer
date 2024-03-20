@@ -37,7 +37,6 @@ packages:
       - ruby-full
       - libvirt-dev
       - rsync
-      - libgtk-3-dev
       - most
       - tlp
       - fzf
@@ -71,6 +70,7 @@ packages:
       - texlive-latex-extra
       - latexmk
       - podman
+      - podman-compose
       - buildah
       - virtualenv
       - taskwarrior
