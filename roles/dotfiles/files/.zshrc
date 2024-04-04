@@ -85,7 +85,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export EDITOR=/usr/bin/vim
-export GREP_COLOR=31
+export GREP_COLORS='mt=31'
 export PASSWORD_STORE_GENERATED_LENGTH=32
 export AWS_VAULT_BACKEND=pass
 export AWS_SDK_LOAD_CONFIG=true
