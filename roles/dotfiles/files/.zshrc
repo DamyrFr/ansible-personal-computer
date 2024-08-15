@@ -4,23 +4,6 @@
 # _ / /_ ___) |  _  |  _ <| |___ 
 #(_)____|____/|_| |_|_| \_\\____|
 #
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-#===================={ Autoload }====================
-autoload -Uz vcs_info #Git status for prompt
-autoload -U colors && colors #load colors
-autoload compinit && compinit -i #tab complementation
-autoload -U select-word-style && select-word-style bash #https://stackoverflow.com/questions/444951/zsh-stop-backward-kill-word-on-directory-delimiter
-autoload colors; colors;
-autoload -U add-zsh-hook #ZSH hook system for update the prompt dynamicly
-autoload -U url-quote-magic #URL completion
-autoload bashcompinit && bashcompinit #For AWS Complet
-zle -N self-insert url-quote-magic
-zle -N edit-command-line
-bindkey "^[m" copy-prev-shell-word
-compinit
-bindkey -e #For shortcuts
-#set -g default-terminal "screen-256color"
 #===================={  Setopt  }====================
 #setopt correct #spelling correction for commands
 setopt multios #implicit tees or cats when multiple redirections are attempted
@@ -34,37 +17,6 @@ setopt complete_in_word #If unset, the cursor is set to the end of the word if c
 setopt always_to_end #If a completion is performed with the cursor within a word, and a full completion is inserted, the cursor is moved to the end of the word
 setopt AUTO_CD #If a command is issued that can’t be executed as a normal command, and the command is the name of a directory, perform the cd command to that directory
 setopt NO_BEEP #No system BEEP
-#===================={ zstyle }====================
-zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
-zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-                             /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh_cache
-zmodload zsh/complist
-setopt extendedglob
-zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;33=0=01'
-zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
-zstyle ':completion:*:processes' command 'ps -ax'
-zstyle ':completion:*:processes-names' command 'ps -aeo comm='
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:*:killall:*:processes-names' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:*:killall:*' menu yes select
-zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
-zstyle ':completion:*:hosts' hosts $hosts
-zstyle ':completion:*' users off
-#GIt
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' unstagedstr '%F{red}*'   # display this when there are unstaged changes
-zstyle ':vcs_info:*' stagedstr '%F{yellow}+'  # display this when there are staged changes
-zstyle ':vcs_info:*' actionformats '%F{5}%F{5}[%F{2}%b%F{3}|%F{1}%a%c%u%F{5}]%f '
-zstyle ':vcs_info:*' formats '%F{5}%F{5}[%F{2}%b%c%u%F{5}]%f '
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
-zstyle ':vcs_info:*' enable git cvs svn
 #===================={ plugin }====================
 source /usr/share/zplug/init.zsh
 zplug "nnao45/zsh-kubectl-completion"
@@ -80,7 +32,6 @@ fi
 zplug load
 #===================={ export }====================
 export EDITOR="nvim"
-export PAGER="most" #Needed for man color
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
@@ -91,31 +42,8 @@ export AWS_VAULT_BACKEND=pass
 export AWS_SDK_LOAD_CONFIG=true
 export GOPATH="/home/thomas/go"
 export PATH="$(yarn global bin):$HOME/.tfenv/bin:$HOME/.asdf/bin/:$HOME/.local/bin:$PATH"
-# Color on man
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
 #===================={ ASDF }====================
 . $HOME/.asdf/asdf.sh
-#===================={ Prompt }====================
-theme_precmd () {
-        vcs_info
-}
-
-local branch='${vcs_info_msg_0_}%{$reset_color%}'
-# Shell PS
-PROMPT='%{$fg[yellow]%}[%*]%{$reset_color%} %{$fg[green]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%} %{$fg[cyan]%}%1d%{$reset_color%} ${vcs_info_msg_0_} » '
-#RPS1='${vcs_info_msg_0_} '
-RPS1="${return_code}"
-add-zsh-hook precmd theme_precmd
-#export LSCOLORS="Gxfxcxdxbxegedabagacad"
-# CHANGE LS COLORS
-LS_COLORS='di=1;33:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90:*.tar=31:*.gz=31'
-
 #===================={ Functions }====================
 extract () {
     if [ -f $1 ]

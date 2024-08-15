@@ -42,7 +42,7 @@
 - name: "Install vim coc plugin"
   shell: "vim +'CocInstall coc-pyright coc-json coc-yaml' +qall &> /dev/null < /dev/tty"
 
-# Neovim
+# Neovim Config is manage on package part
 - name: "Init Neovim repo"
   become: true
   file:
@@ -51,16 +51,6 @@
     mode: '0755'
     owner: "{{ user }}"
     group: "{{ user }}"
-  tags: dotfiles
-
-- name: "Add configuration file for Neovim"
-  become: true
-  copy:
-    src: ../files/init.lua
-    dest: "/home/{{ user }}/.config/nvim/"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: 0644
   tags: dotfiles
 
 - name: "Add configuration for Starship prompt"

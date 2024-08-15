@@ -175,22 +175,22 @@ plugins {
 }
 
 themes {
-    nord {
-        fg 216 222 233 // #D8DEE9
-        bg 46 52 64 // #2E3440
-        black 59 66 82 // #3B4252
-        red 191 97 106 // #BF616A
-        green 163 190 140 // #A3BE8C
-        yellow 235 203 139 // #EBCB8B
-        blue 129 161 193 // #81A1C1
-        magenta 180 142 173 // #B48EAD
-        cyan 136 192 208 // #88C0D0
-        white 229 233 240 // #E5E9F0
-        orange 208 135 112 // #D08770
+    pastel_light {
+        fg 67 76 94 // #434A5E
+        bg 253 247 237 // #FDF7ED
+        black 67 76 94 // #434A5E
+        red 239 154 154 // #EF9A9A
+        green 129 199 132 // #81C784
+        yellow 255 213 79 // #FFD54F
+        blue 144 202 249 // #90CAF9
+        magenta 206 147 216 // #CE93D8
+        cyan 128 222 234 // #80DEEA
+        white 253 247 237 // #FDF7ED
+        orange 255 183 77 // #FFB74D
     }
 }
 
-theme "nord"
+theme "pastel_light"
 default_layout "compact"
 copy_command "xclip -selection clipboard" // x11
 // copy_command "wl-copy"                    // wayland

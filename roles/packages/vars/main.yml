@@ -81,4 +81,5 @@ packages:
       - pre-commit
       - python3-openstackclient
       - testssl.sh
+      - systemd-boot
       - gopls

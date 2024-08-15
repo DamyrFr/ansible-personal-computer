@@ -1,7 +1,4 @@
 ---
-- name: Firewall setup
-  include_tasks: firewall.yml
-
 - name: rkhunter setup
   include_tasks: rkhunter.yml
 

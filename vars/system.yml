@@ -1,13 +1,12 @@
 ---
 gui: true
 forward: true
-custom_hostname: laptop-waays
+custom_hostname: ghost
 stable_debian_codename: "bullseye"
 timezone: 'Europe/Paris'
 tmp_dir: "/tmp"
 architecture: "x86_64"
 latestff: false
 dns_servers:
+  - "9.9.9.11"
   - "1.1.1.1"
-  - "208.67.220.220"
-  - "206.125.173.29"

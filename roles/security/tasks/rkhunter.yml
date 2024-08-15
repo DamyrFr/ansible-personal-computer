@@ -3,6 +3,6 @@
   template: src=rkhunter.conf.j2 dest=/etc/rkhunter.conf
   become: true
 
-- name: Update rkhunter
-  shell: "rkhunter --propupd"
-  become: true
+#- name: Update rkhunter
+#  shell: "rkhunter --propupd"
+#  become: true

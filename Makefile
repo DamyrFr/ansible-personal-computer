@@ -1,4 +1,5 @@
 init:
+	apt update && apt inwstall python3 python3-pip3
 	pip3 install -r requirements.txt
 	ansible-galaxy install -r requirements.yml
 
