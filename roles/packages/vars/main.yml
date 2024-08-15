@@ -17,7 +17,6 @@ packages:
       - nmap
       - net-tools
       - gcc
-      - iptables
       - automake
       - autoconf
       - htop
@@ -37,16 +36,13 @@ packages:
       - ruby-full
       - libvirt-dev
       - rsync
-      - most
       - tlp
       - fzf
       - scdaemon
       - pcscd
       - dirmngr
       - fping
-      - youtube-dl
       - firmware-linux
-      - bijiben
       - apparmor
       - apparmor-profiles
       - apparmor-utils
@@ -83,3 +79,4 @@ packages:
       - testssl.sh
       - systemd-boot
       - gopls
+      - neofetch
