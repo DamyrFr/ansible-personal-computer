@@ -13,6 +13,7 @@ packages:
       - silversearcher-ag
       - vim-gtk3 # To have the clipboard feature enable
       - gnome-pass-search-provider # https://github.com/jle64/gnome-pass-search-provider
+      - python3-psutil # used by Ansible
 to_remove:
       - gnome-robots
       - gnome-music
