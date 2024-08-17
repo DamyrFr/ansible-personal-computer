@@ -8,7 +8,7 @@
   become: true
   unarchive:
     src: "{{ tmp_dir }}/nvim-linux64.tar.gz"
-    dest: "/usr/"
+    dest: "/opt/"
   tags: neovim
 
 - name: "Clone neovim configuration"
