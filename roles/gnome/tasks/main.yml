@@ -1,10 +1,4 @@
 ---
-- name: Parameter PC by using dconf
-  include_tasks: dconf.yml
-
-- name: Install fonts
-  include_tasks: fonts.yml
-
 - name: "Install tools and stuff"
   become: true
   apt:
@@ -27,6 +21,11 @@
     owner: "{{ user }}"
     group: "{{ user }}"
 
+- name: Parameter PC by using dconf
+  include_tasks: dconf.yml
+
+- name: Install fonts
+  include_tasks: fonts.yml
 
 - name: "Download icons (Paper)"
   get_url:
