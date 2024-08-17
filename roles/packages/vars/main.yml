@@ -67,7 +67,6 @@ packages:
       - latexmk
       - podman
       - podman-compose
-      - blackbox-terminal
       - buildah
       - virtualenv
       - taskwarrior
