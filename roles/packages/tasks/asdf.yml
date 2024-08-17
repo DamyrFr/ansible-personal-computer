@@ -1,15 +1,10 @@
 ---
-- name: "get users HOME"
-  getent:
-    database: passwd
-    key: "{{ user }}"
-    split: ":"
-  tags: upgrade
-
 - name: "ASDF set home var"
   set_fact:
-    "asdf_user_home": "{{ getent_passwd[user][4] }}"
-  tags: upgrade
+    "asdf_user_home": "/home/{{ user }}"
+  tags:
+    - upgrade
+    - asdf
 
 - name: "install asdf"
   git:
@@ -18,7 +13,9 @@
     version: "{{ asdf_version }}"
   become: True
   become_user: "{{ user }}"
-  tags: upgrade
+  tags:
+    - upgrade
+    - asdf
 
 - name: "install asdf plugins"
   command: "zsh -c 'asdf plugin-add {{ item.name }} {{ item.repository | default() }}'"
@@ -30,7 +27,9 @@
   become: True
   become_user: "{{ user }}"
   ignore_errors: True
-  tags: upgrade
+  tags:
+    - upgrade
+    - asdf
 
 - name: "install apps with asdf"
   command: "bash -lc 'asdf install {{ item.0.name }} {{ item.1 }}'"
@@ -45,4 +44,6 @@
   when: asdf_plugins|length > 0
   become: True
   become_user: "{{ user }}"
-  tags: upgrade
+  tags:
+    - upgrade
+    - asdf
