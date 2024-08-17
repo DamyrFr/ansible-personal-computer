@@ -1,7 +1,10 @@
 init:
-	apt update && apt inwstall python3 python3-pip3
+	apt update && apt install python3 python3-pip3
 	pip3 install -r requirements.txt
 	ansible-galaxy install -r requirements.yml
+
+pass:
+	curl -sSL https://codeberg.org/PassFF/passff-host/releases/download/latest/install_host_app.sh | bash -s -- firefox
 
 dry-run-full:
 	ansible-playbook computer.yml --check --tags all
@@ -20,6 +23,9 @@ upgrade:
 
 neovim:
 	ansible-playbook computer.yml --tags "neovim"
+
+asdf:
+	ansible-playbook computer.yml --tags "asdf"
 
 dotfiles:
 	ansible-playbook computer.yml --tags dotfiles
