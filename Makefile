@@ -3,6 +3,11 @@ init:
 	pip3 install -r requirements.txt
 	ansible-galaxy install -r requirements.yml
 
+gnome-theme:
+	mkdir -p ~/Projets/Github/
+	git clone git@github.com:imarkoff/Marble-shell-theme.git ~/Projets/Github/
+	python ~/Projets/Github/Marble-shell-theme/install.py -a --filled
+
 pass:
 	curl -sSL https://codeberg.org/PassFF/passff-host/releases/download/latest/install_host_app.sh | bash -s -- firefox
 
