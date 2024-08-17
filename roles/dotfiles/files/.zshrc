@@ -10,10 +10,8 @@ setopt multios #implicit tees or cats when multiple redirections are attempted
 setopt cdablevarS #if the argument to cd is the name of a parameter whose value is a valid directory, it will become the current directory. 
 setopt prompt_subst #turns on command substitution in the prompt
 setopt long_list_jobs #Print job notifications in the long format by default.
-unsetopt menu_complete   # do not autoselect the first completion entry
 unsetopt flowcontrol #output flow control via start/stop characters (usually assigned to ^S/^Q) is disabled in the shell’s editor.
 setopt auto_menu         # show completion menu on succesive tab press
-setopt complete_in_word #If unset, the cursor is set to the end of the word if completion is started. Otherwise it stays there and completion is done from both ends. 
 setopt always_to_end #If a completion is performed with the cursor within a word, and a full completion is inserted, the cursor is moved to the end of the word
 setopt AUTO_CD #If a command is issued that can’t be executed as a normal command, and the command is the name of a directory, perform the cd command to that directory
 setopt NO_BEEP #No system BEEP
@@ -40,8 +38,8 @@ export GREP_COLORS='mt=31'
 export PASSWORD_STORE_GENERATED_LENGTH=32
 export AWS_VAULT_BACKEND=pass
 export AWS_SDK_LOAD_CONFIG=true
-export GOPATH="/home/thomas/go"
-export PATH="$(yarn global bin):$HOME/.tfenv/bin:$HOME/.asdf/bin/:$HOME/.local/bin:$PATH"
+export GOPATH="/home/$HOME/go"
+export PATH="/opt/nvim-linux64/bin:$HOME/.tfenv/bin:$HOME/.asdf/bin/:$HOME/.local/bin:$PATH"
 #===================={ ASDF }====================
 . $HOME/.asdf/asdf.sh
 #===================={ Functions }====================
@@ -131,9 +129,6 @@ alias awsd="source _awsd"
 #===================={ completion }====================
 # Kube
 source <(kubectl completion zsh)
-complete -F __start_kubectl k
-# AWS
-complete -C '/usr/local/bin/aws_completer' aws
 # Scaleway CLI autocomplete initialization.
 eval "$(scw autocomplete script shell=zsh)"
 #======================{ direnv }=====================
