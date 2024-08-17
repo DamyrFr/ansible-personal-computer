@@ -86,7 +86,9 @@
 
 - name: Install asdf suff 
   include_tasks: asdf.yml
-  tags: upgrade
+  tags:
+    - upgrade
+    - asdf
 
 - name: Install Firefox
   include_tasks: firefox.yml
