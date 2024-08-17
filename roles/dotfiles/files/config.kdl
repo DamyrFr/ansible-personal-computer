@@ -190,7 +190,7 @@ themes {
     }
 }
 
-theme "pastel_light"
+theme catppuccin-latte
 default_layout "compact"
 copy_command "xclip -selection clipboard" // x11
 // copy_command "wl-copy"                    // wayland
