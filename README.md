@@ -66,6 +66,6 @@ All my configuration is split on 6 Ansible roles, and somes pre steps on Makefil
 
 ## 📄 License
 
-Big thanks to [Kelly Sikkema](https://unsplash.com/fr/@kellysikkema) for the [wallpeaper](https://unsplash.com/fr/photos/boutons-floraux-roses-dans-une-lentille-a-bascule-Gxzgc6OJjlo).
+Big thanks to [Kelly Sikkema](https://unsplash.com/fr/@kellysikkema) for the [wallpaper](https://unsplash.com/fr/photos/boutons-floraux-roses-dans-une-lentille-a-bascule-Gxzgc6OJjlo).
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. Feel free to use it, not all is perfect, but work pretty well.
