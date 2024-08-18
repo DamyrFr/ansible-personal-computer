@@ -1,3 +1,6 @@
+firstrun:
+	init full
+
 init:
 	apt update && apt install python3 python3-pip3
 	pip3 install -r requirements.txt

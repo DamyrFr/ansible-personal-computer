@@ -1,58 +1,71 @@
-# PC as Code
+# My Desktop & Laptop Configuration
 
-All my configuration files and Debian config by code !
+This repository contains my personal desktop and laptop configurations, showcasing a clean and efficient setup for development and daily use.
 
-Build for deploy my environment on laptop, PC and GNU/Linux bastion.
+## 📸 Screenshots
 
-Warning : This code is build for Debian.
+![View from classic desktop](./img/classic.png)
+![View from IDE desktop](./img/ide.png)
 
-This is build to make new installation of my environment easier. All dosen't follow best practice for now.
+## 🛠️ Setup Details
 
-## Inputs
+- **Operating System**: Debian Testing 🍥
+- **Desktop Environment**: GNOME
+- **Theme**: Light theme [Marble](https://github.com/imarkoff/Marble-shell-theme)
 
-* User related `vars/user.yml`
+## 🧰 Development Tools
 
-|   Variables      |   Types      | Description |
-| -------------    |:------------:| -----------:|
-|     user         |    string    | User name for my user |
-|    tmp_dir		   |    string    | Temporary directory |
+- **Text Editor**: [Neovim](https://www.damyr.fr/posts/neovim/)
+- **Terminal Multiplexer**: [Zellij](https://www.damyr.fr/posts/zellij/)
+- **Web Browser**: Firefox (not ESR)
+- **Secret manager**: [Pass](https://www.damyr.fr/posts/passwordmanager/)
 
-* System related `vars/system.yml`
+## 📁 Repository Structure
 
-|   Variables      |   Types      | Description |
-| -------------    |:------------:| -----------:|
-|     gui          |    bool      | Used to set if you need to configure GNOME 3 environment |
-|   forward        |    bool      | Used to set if you need to allow the FORWARD iptables tables |
-|custom_hostname   |    string    | Custom hostname for the computer|
-|    timezone      |    string    | Current timezone for user |
-| architecture     |    string    | Your computer infrastrucutre |
-| dns_servers      | list(string) | List of DNS servers to set |
-|    alt_env       | list(string) | List of alternative user |
+All my configuration is split on 6 Ansible roles, and somes pre steps on Makefile.
 
-* packages `vars/packages.yml`
+```
+├── computer.yml # main Ansible playbook
+├── LICENSE
+├── Makefile # Makefile with first steps and shortcut for Ansible Tags
+├── README.md # <--- You are here 
+├── requirements.txt
+├── requirements.yml
+├── roles
+│   ├── dotfiles # Managing all dotfiles conf (Neovim is clone from another Github project)
+│   ├── gnome # Setup all my Gnome, theme and stuff
+│   ├── packages # Install all my tools with apt and asdf
+│   ├── security # some specific parameters
+│   ├── system # Global settings
+│   └── user # Manage user and stuff
+└── vars
+    ├── packages.yml
+    ├── system.yml
+    └── user.yml
+```
 
-## Tags
+## 🚀 My process
 
-* `firefox` : Insall / upgrade Firefox (latest release)
-* `upgrade` : Install / upgrade packages, software
-* `dotfiles` : Sync dotfiles
+1. Install base:
+   ```
+   apt update && apt -y install git
+   ```
+1. Clone this repository:
+   ```
+   git clone git@github.com:DamyrFr/ansible-personal-computer.git
+   ```
+3. Run all
+   ```
+   make firstrun
+   ```
 
-## Roles
+## 🔗 Related Projects
 
-* User : create user, create ssh key and add it to sudoers
-* Packages : Install softwares, apt, pip, gem and Vagrant
-* Dotfiles : Deploy my dotfiles, .zshrc, .gitconfig, .tmux.conf
-* Security : Setup iptables rules make it permanent
-* gnome : if your set "gui" configure Gnome 3
+- [My Neovim Configuration](https://github.com/yourusername/neovim-config): A separate repository containing all my Neovim configuration files and plugins.
+- [My NixOS configuration](https://github.com/DamyrFr/MyNixOSConfig) : I have a NixOS system, and I have start to migrate this on Nix so you will find a part of all this on it.
 
-## How configure your own user ?
+## 📄 License
 
-Create your own variable user files ! Or fork it for more possibilities ;)
+Big thanks to [Kelly Sikkema](https://unsplash.com/fr/@kellysikkema) for the [wallpeaper](https://unsplash.com/fr/photos/boutons-floraux-roses-dans-une-lentille-a-bascule-Gxzgc6OJjlo).
 
-## If you juste need my dotfiles
-
-Checkout `./roles/dotfiles/files/`
-
-## Credit for wallpaper
-
-[Emilien Muller](https://unsplash.com/@mil68)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. Feel free to use it, not all is perfect, but work pretty well.
