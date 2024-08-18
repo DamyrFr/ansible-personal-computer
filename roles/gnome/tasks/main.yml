@@ -50,3 +50,25 @@
     key: "/org/gnome/desktop/interface/icon-theme"
     value: "'Paper'"
     state: present
+
+- name: "Ensure the Github projects directory exists"
+  ansible.builtin.file:
+    path: "~/Projets/Github"
+    state: directory
+    mode: '0755'
+
+- name: "Clone the Marble-shell-theme repository"
+  ansible.builtin.git:
+    repo: 'https://github.com/imarkoff/Marble-shell-theme.git'
+    dest: "~/Projets/Github/Marble-shell-theme"
+    version: main
+
+- name: "Run the install script"
+  ansible.builtin.command:
+    cmd: python ~/Projets/Github/Marble-shell-theme/install.py -a --filled
+
+- name: "Set Gnome theme"
+  dconf:
+    key: "/org/gnome/desktop/interface/icon-theme"
+    value: "'Marble-blue-light'"
+    state: present
