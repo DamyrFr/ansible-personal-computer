@@ -1,4 +1,4 @@
-# My Desktop & Laptop Configuration
+# My system configuration
 
 This repository contains my personal desktop and laptop configurations, showcasing a clean and efficient setup for development and daily use.
 
