@@ -1,0 +1,66 @@
+---
+- name: "Check current icon pack"
+  ansible.builtin.command:
+    cmd: dconf read {{ dconf_path_icon }}
+  register: dconf_icon_value
+  changed_when: false
+
+- name: "Download and set the icons"
+  block:
+  - name: "Download icons (Paper)"
+    get_url:
+      url: "{{ url_deb_icons }}"
+      dest: "{{ tmp_dir }}/paper_icon.deb"
+
+  - name: "Install icons (Paper)"
+    become: true
+    apt:
+      deb: "{{ tmp_dir }}/paper_icon.deb"
+
+  - name: "Remove package archive"
+    become: true
+    file:
+      path: "{{ tmp_dir }}/paper_icon.deb"
+      state: absent
+
+  - name: "Gnome set icons"
+    become: true
+    become_user: "{{ user }}"
+    dconf:
+      key: "{{ dconf_path_icon }}"
+      value: "'Paper'"
+      state: present
+  when: dconf_icon_value != 'Paper'
+
+- name: "Check current theme"
+  ansible.builtin.command:
+    cmd: dconf read {{ dconf_path_theme }}
+  register: dconf_theme_value
+  changed_when: false
+
+- name: "Download and set the theme"
+  block:
+  - name: "Ensure the Github projects directory exists"
+    ansible.builtin.file:
+      path: "~/Projets/Github"
+      state: directory
+      mode: '0755'
+
+  - name: "Clone the Marble-shell-theme repository"
+    ansible.builtin.git:
+      repo: 'https://github.com/imarkoff/Marble-shell-theme.git'
+      dest: "~/Projets/Github/Marble-shell-theme"
+      version: main
+
+  - name: "Run the install script"
+    ansible.builtin.command:
+      cmd: python ~/Projets/Github/Marble-shell-theme/install.py -a --filled
+
+  - name: "Set Gnome theme"
+    become: true
+    become_user: "{{ user }}"
+    dconf:
+      key: "{{ dconf_path_theme }}"
+      value: "'Marble-blue-light'"
+      state: present
+  when: dconf_theme_value != 'Marble-blue-light'
