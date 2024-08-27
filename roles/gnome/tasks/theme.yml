@@ -42,14 +42,14 @@
   block:
   - name: "Ensure the Github projects directory exists"
     ansible.builtin.file:
-      path: "~/Projets/Github"
+      path: "~/Projects/Github"
       state: directory
       mode: '0755'
 
   - name: "Clone the Marble-shell-theme repository"
     ansible.builtin.git:
       repo: 'https://github.com/imarkoff/Marble-shell-theme.git'
-      dest: "~/Projets/Github/Marble-shell-theme"
+      dest: "~/Projects/Github/Marble-shell-theme"
       version: main
 
   - name: "Run the install script"
