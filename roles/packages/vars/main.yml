@@ -5,6 +5,7 @@ neovim_version: "v0.9.4"
 packages:
       - vim
       - ripgrep
+      - systemd-resolved
       - ipcalc
       - tcpdump
       - dnsutils
