@@ -5,13 +5,28 @@
 #(_)____|____/|_| |_|_| \_\\____|
 #
 #===================={  Setopt  }====================
-#setopt correct #spelling correction for commands
+autoload -Uz vcs_info #Git status for prompt
+autoload -U colors && colors #load colors
+autoload compinit && compinit -i #tab complementation
+autoload -U select-word-style && select-word-style bash #https://stackoverflow.com/questions/444951/zsh-stop-backward-kill-word-on-directory-delimiter
+autoload colors; colors;
+autoload -U add-zsh-hook #ZSH hook system for update the prompt dynamicly
+autoload -U url-quote-magic #URL completion
+autoload bashcompinit && bashcompinit #For AWS Complet
+zle -N self-insert url-quote-magic
+zle -N edit-command-line
+bindkey "^[m" copy-prev-shell-word
+compinit
+bindkey -e #For shortcuts
+#===================={  Setopt  }====================
 setopt multios #implicit tees or cats when multiple redirections are attempted
 setopt cdablevarS #if the argument to cd is the name of a parameter whose value is a valid directory, it will become the current directory. 
 setopt prompt_subst #turns on command substitution in the prompt
 setopt long_list_jobs #Print job notifications in the long format by default.
+unsetopt menu_complete   # do not autoselect the first completion entry
 unsetopt flowcontrol #output flow control via start/stop characters (usually assigned to ^S/^Q) is disabled in the shell’s editor.
 setopt auto_menu         # show completion menu on succesive tab press
+setopt complete_in_word #If unset, the cursor is set to the end of the word if completion is started. Otherwise it stays there and completion is done from both ends. 
 setopt always_to_end #If a completion is performed with the cursor within a word, and a full completion is inserted, the cursor is moved to the end of the word
 setopt AUTO_CD #If a command is issued that can’t be executed as a normal command, and the command is the name of a directory, perform the cd command to that directory
 setopt NO_BEEP #No system BEEP
@@ -126,6 +141,9 @@ alias pr='pass generate -i'
 alias k='kubectl'
 alias docker='podman'
 alias awsd="source _awsd"
+alias k9ss="k9s --insecure-skip-tls-verify"
+alias kb="kubectl kustomize --load-restrictor LoadRestrictionsNone  ./"
+alias fs="flux get all -A --status-selector ready=false"
 #===================={ completion }====================
 # Kube
 source <(kubectl completion zsh)
