@@ -1,10 +1,12 @@
 ---
 # GCP repo
 - name: "Add Google gcloud (gcp) repository key"
-  apt_key:
-    url: "https://packages.cloud.google.com/apt/doc/apt-key.gpg" 
-    state: present
   become: true
+  ansible.builtin.get_url:
+    url: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+    dest: "{{ path_apt_gpg }}gcp.asc"
+    mode: '0644'
+    force: true
 
 - name: "Add Google gcloud (gcp) repository"
   apt_repository:
@@ -14,10 +16,12 @@
 
 # Spotify repo
 - name: "Add Spotify repository key"
-  apt_key:
-    url: "https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg"
-    state: present
   become: true
+  ansible.builtin.get_url:
+    url: "https://download.spotify.com/debian/pubkey_C85668DF69375001.gpg"
+    dest: "{{ path_apt_gpg }}spotify.asc"
+    mode: '0644'
+    force: true
 
 - name: "Add Spotify repository"
   apt_repository:
@@ -27,10 +31,12 @@
 
 # Hashicorp
 - name: "Add Hashicorp repository key"
-  apt_key:
-    url: "https://apt.releases.hashicorp.com/gpg" 
-    state: present
   become: true
+  ansible.builtin.get_url:
+    url: "https://apt.releases.hashicorp.com/gpg"
+    dest: "{{ path_apt_gpg }}hashicorp.asc"
+    mode: '0644'
+    force: true
 
 - name: "Add Hashicorp repository"
   apt_repository:
