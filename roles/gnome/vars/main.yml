@@ -9,7 +9,7 @@ packages:
       - chromium # just in case :) 
       - gnome-boxes
       - wl-clipboard
-      - yarn # For zsh modules
+      - yarnpkg
       - silversearcher-ag
       - vim-gtk3 # To have the clipboard feature enable
       - gnome-pass-search-provider # https://github.com/jle64/gnome-pass-search-provider
@@ -24,6 +24,7 @@ to_remove:
       - gnome-taquin
       - gnome-tetravex
       - evolution
+      - firefox-esr
       - vim
 fav_apps: "['org.gnome.Terminal.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop']"
 dconf_path_theme: "/org/gnome/shell/extensions/user-theme/name"
