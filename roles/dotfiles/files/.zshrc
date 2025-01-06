@@ -138,7 +138,7 @@ alias sl='ls'
 alias mplayerfb='mplayer -vo fbdev -vf scale=1024:768'
 alias grep='grep --color=auto'
 alias pr='pass generate -i'
-alias k='kubectl'
+alias k='kubecolor --light-background'
 alias docker='podman'
 alias awsd="source _awsd"
 alias k9ss="k9s --insecure-skip-tls-verify"

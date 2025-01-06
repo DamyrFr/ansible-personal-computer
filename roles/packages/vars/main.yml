@@ -79,5 +79,5 @@ packages:
       - python3-openstackclient
       - testssl.sh
       - systemd-boot
-      - gopls
+      - kubecolor
       - neofetch
