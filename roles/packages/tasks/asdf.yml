@@ -5,45 +5,35 @@
   tags:
     - upgrade
     - asdf
+- name: Install asdf plugins and versions
+  block:
+    - name: Add asdf plugins
+      command: "asdf plugin add {{ item.name }}"
+      register: plugin_add
+      failed_when: 
+        - plugin_add.rc != 0 
+        - "'already added' not in plugin_add.stderr"
+      changed_when: plugin_add.rc == 0
+      with_items: "{{ asdf_plugins }}"
 
-- name: "install asdf"
-  git:
-    repo: "https://github.com/asdf-vm/asdf.git"
-    dest: "{{ asdf_user_home }}/.asdf"
-    version: "{{ asdf_version }}"
-  become: True
-  become_user: "{{ user }}"
-  tags:
-    - upgrade
-    - asdf
+    - name: Install latest version for each plugin
+      command: "asdf install {{ item.name }} latest"
+      register: version_install
+      failed_when:
+        - version_install.rc != 0
+        - "'is already installed' not in version_install.stderr"
+      changed_when: version_install.rc == 0
+      with_items: "{{ asdf_plugins }}"
 
-- name: "install asdf plugins"
-  command: "zsh -c 'asdf plugin-add {{ item.name }} {{ item.repository | default() }}'"
-  args:
-    creates: "{{ asdf_user_home }}/.asdf/plugins/{{ item.name }}"
-    chdir: "{{ asdf_user_home }}"
-  with_items: "{{ asdf_plugins }}"
-  when: asdf_plugins|length > 0
-  become: True
-  become_user: "{{ user }}"
-  ignore_errors: True
-  tags:
-    - upgrade
-    - asdf
+    - name: Set global version for each plugin
+      command: "asdf global {{ item.name }} latest"
+      register: global_set
+      changed_when: global_set.rc == 0
+      with_items: "{{ asdf_plugins }}"
 
-- name: "install apps with asdf"
-  command: "bash -lc 'asdf install {{ item.0.name }} {{ item.1 }}'"
-  args:
-    creates: "{{ asdf_user_home }}/.asdf/installs/{{ item.0.name }}/{{ item.1 }}"
-    chdir: "{{ asdf_user_home }}"
-  with_subelements:
-    - "{{ asdf_plugins }}"
-    - versions
-    - flags:
-      skip_missing: True
-  when: asdf_plugins|length > 0
-  become: True
-  become_user: "{{ user }}"
+    - name: Reshim all plugins
+      command: "asdf reshim"
+      changed_when: false
   tags:
     - upgrade
     - asdf
