@@ -175,22 +175,22 @@ plugins {
 }
 
 themes {
-    pastel_light {
-        fg 67 76 94 // #434A5E
-        bg 253 247 237 // #FDF7ED
-        black 67 76 94 // #434A5E
-        red 239 154 154 // #EF9A9A
-        green 129 199 132 // #81C784
-        yellow 255 213 79 // #FFD54F
-        blue 144 202 249 // #90CAF9
-        magenta 206 147 216 // #CE93D8
-        cyan 128 222 234 // #80DEEA
-        white 253 247 237 // #FDF7ED
-        orange 255 183 77 // #FFB74D
+    default {
+      bg "#acb0be" // Surface2
+      fg "#4c4f69" // Text
+      red "#d20f39"
+      green "#40a02b"
+      blue "#1e66f5"
+      yellow "#df8e1d"
+      magenta "#ea76cb" // Pink
+      orange "#fe640b" // Peach
+      cyan "#04a5e5" // Sky
+      black "#e6e9ef" // Mantle
+      white "#4c4f69" // Text
     }
 }
 
-theme catppuccin-latte
+theme default
 default_layout "compact"
 copy_command "xclip -selection clipboard" // x11
 // copy_command "wl-copy"                    // wayland
