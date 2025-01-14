@@ -3,4 +3,4 @@ user: damyr
 git_username: Thomas 
 git_name: DamyrFr
 git_email: thomas@anvir.fr
-git_sign_key: "86F5A5B6C9B3BBD8"
+git_sign_key: "~/.ssh/id_ed25519.pub"
