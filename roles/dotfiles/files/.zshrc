@@ -141,6 +141,7 @@ alias pr='pass generate -i'
 alias k='kubecolor --light-background'
 alias docker='podman'
 alias awsd="source _awsd"
+alias tf="tofu"
 alias k9ss="k9s --insecure-skip-tls-verify"
 alias kb="kubectl kustomize --load-restrictor LoadRestrictionsNone  ./"
 alias fs="flux get all -A --status-selector ready=false"
