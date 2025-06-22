@@ -80,4 +80,5 @@ packages:
       - testssl.sh
       - systemd-boot
       - kubecolor
+      - kitty
       - neofetch

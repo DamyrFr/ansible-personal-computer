@@ -26,6 +26,6 @@ to_remove:
       - evolution
       - firefox-esr
       - vim
-fav_apps: "['org.gnome.Terminal.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop']"
+fav_apps: "['kitty.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop']"
 dconf_path_theme: "/org/gnome/shell/extensions/user-theme/name"
 dconf_path_icon: "/org/gnome/desktop/interface/icon-theme"

@@ -11,6 +11,16 @@
     ['.zshrc','.vimrc', '.tmux.conf']
   tags: dotfiles
 
+- name: "Add Kitty configuration"
+  become: true
+  copy:
+    src: ../files/kitty.conf
+    dest: "/home/{{ user }}/.config/kitty/kitty.conf"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+  tags: dotfiles
+
 - name: "Configure Gitfile"
   template: src=gitconfig.j2 dest="/home/{{ user }}/.gitconfig"
   become: true

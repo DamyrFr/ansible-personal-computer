@@ -51,7 +51,15 @@
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/shell/favorite-apps"
-    value: "['com.raggesilver.BlackBox.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop']"
+    value: "['kitty.desktop', 'firefox.desktop', 'org.gnome.Nautilus.desktop']"
+    state: present
+
+- name: "Gnome set default terminal"
+  become: true
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/desktop/applications/terminal/exec"
+    value: "kitty"
     state: present
 
 - name: "Gnome set user theme"
