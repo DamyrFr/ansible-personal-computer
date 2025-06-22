@@ -1,6 +1,4 @@
 ---
-node_version_major: "12"
-node_version: "{{ node_version_major }}.20.2-1nodesource1"
 neovim_version: "v0.11.2"
 path_apt_gpg: "/etc/apt/trusted.gpg.d/"
 packages:
@@ -81,4 +79,5 @@ packages:
       - systemd-boot
       - kubecolor
       - kitty
+      - nodejs
       - neofetch
