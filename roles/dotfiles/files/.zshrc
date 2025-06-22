@@ -54,7 +54,7 @@ export PASSWORD_STORE_GENERATED_LENGTH=32
 export AWS_VAULT_BACKEND=pass
 export AWS_SDK_LOAD_CONFIG=true
 export GOPATH="$HOME/go"
-export PATH="/opt/nvim-linux64/bin:$HOME/.tfenv/bin:$HOME/.asdf/bin/:$HOME/.local/bin:$PATH"
+export PATH="/opt/nvim-linux-x86_64/bin:$HOME/.tfenv/bin:$HOME/.asdf/bin/:$HOME/.local/bin:$PATH"
 #===================={ ASDF }====================
 . $HOME/.asdf/asdf.sh
 #===================={ Functions }====================
