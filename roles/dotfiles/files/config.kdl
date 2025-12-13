@@ -190,7 +190,7 @@ themes {
     }
 }
 
-theme default
+theme "default"
 default_layout "compact"
 pane_frames false
 copy_command "xclip -selection clipboard" // x11
